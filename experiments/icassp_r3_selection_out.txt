@@ -1,0 +1,102 @@
+ICASSP R3 selection + screen study on the frozen R2 holdout collection
+cache=icassp_r2_holdout_cache.pkl  K=24  MC=400  alpha=0.10  bootstrap B=4000
+scope: diagnostic on frozen trajectories; no adaptive-validity or selection-adjusted theorem
+
+[ucb_fieller] selected-arm study; one selected unit per trajectory; MC=400
+  rule: argmax empirical ratio (n>=2)       P(selected == true best)=0.425  median n(selected)=892  min n=73
+    Fieller | per-arm alpha          report=1.0000 [1.0000,1.0000]  conditional=0.9075 [0.8775,0.9350]  joint=0.9075 [0.8775,0.9350]  med width=0.0147 [0.0146,0.0148]
+    Fieller | Bonferroni alpha/K     report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0256 [0.0254,0.0259]
+    raw delta | per-arm alpha        report=1.0000 [1.0000,1.0000]  conditional=0.9075 [0.8775,0.9350]  joint=0.9075 [0.8800,0.9350]  med width=0.0147 [0.0146,0.0148]
+    raw delta | Bonferroni alpha/K   report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0256 [0.0254,0.0258]
+    delta-JV | per-arm alpha         report=1.0000 [1.0000,1.0000]  conditional=0.9075 [0.8775,0.9350]  joint=0.9075 [0.8775,0.9350]  med width=0.0147 [0.0146,0.0148]
+    delta-JV | Bonferroni alpha/K    report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0256 [0.0254,0.0258]
+    Jeffreys+cost | per-arm alpha    report=1.0000 [1.0000,1.0000]  conditional=0.9650 [0.9475,0.9825]  joint=0.9650 [0.9450,0.9825]  med width=0.0208 [0.0206,0.0211]
+    Jeffreys+cost | Bonferroni alpha/K report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0327 [0.0324,0.0331]
+  rule: most pulled arm                     P(selected == true best)=0.420  median n(selected)=896  min n=245
+    Fieller | per-arm alpha          report=1.0000 [1.0000,1.0000]  conditional=0.9075 [0.8800,0.9350]  joint=0.9075 [0.8775,0.9350]  med width=0.0147 [0.0145,0.0148]
+    Fieller | Bonferroni alpha/K     report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0256 [0.0254,0.0258]
+    raw delta | per-arm alpha        report=1.0000 [1.0000,1.0000]  conditional=0.9075 [0.8775,0.9350]  joint=0.9075 [0.8775,0.9350]  med width=0.0147 [0.0145,0.0148]
+    raw delta | Bonferroni alpha/K   report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0256 [0.0253,0.0258]
+    delta-JV | per-arm alpha         report=1.0000 [1.0000,1.0000]  conditional=0.9075 [0.8775,0.9350]  joint=0.9075 [0.8775,0.9350]  med width=0.0147 [0.0145,0.0148]
+    delta-JV | Bonferroni alpha/K    report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0256 [0.0254,0.0258]
+    Jeffreys+cost | per-arm alpha    report=1.0000 [1.0000,1.0000]  conditional=0.9675 [0.9500,0.9850]  joint=0.9675 [0.9500,0.9850]  med width=0.0208 [0.0206,0.0210]
+    Jeffreys+cost | Bonferroni alpha/K report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.0326 [0.0324,0.0331]
+  rule: fixed true-best arm (reference)     P(selected == true best)=1.000  median n(selected)=12  min n=2
+    Fieller | per-arm alpha          report=0.5100 [0.4600,0.5600]  conditional=0.8627 [0.8168,0.9086]  joint=0.4400 [0.3925,0.4875]  med width=0.0152 [0.0149,0.0155]
+    Fieller | Bonferroni alpha/K     report=0.5100 [0.4625,0.5575]  conditional=1.0000 [1.0000,1.0000]  joint=0.5100 [0.4600,0.5600]  med width=0.0264 [0.0260,0.0270]
+    raw delta | per-arm alpha        report=1.0000 [1.0000,1.0000]  conditional=0.4325 [0.3850,0.4800]  joint=0.4325 [0.3850,0.4800]  med width=0.0137 [0.0000,0.0141]
+    raw delta | Bonferroni alpha/K   report=1.0000 [1.0000,1.0000]  conditional=0.5100 [0.4625,0.5600]  joint=0.5100 [0.4600,0.5600]  med width=0.0238 [0.0000,0.0245]
+    delta-JV | per-arm alpha         report=1.0000 [1.0000,1.0000]  conditional=0.9275 [0.9000,0.9525]  joint=0.9275 [0.9000,0.9525]  med width=0.1010 [0.0354,0.7197]
+    delta-JV | Bonferroni alpha/K    report=1.0000 [1.0000,1.0000]  conditional=1.0000 [1.0000,1.0000]  joint=1.0000 [1.0000,1.0000]  med width=0.1983 [0.0623,17.6599]
+    Jeffreys+cost | per-arm alpha    report=0.6150 [0.5650,0.6625]  conditional=0.9715 [0.9498,0.9913]  joint=0.5975 [0.5500,0.6450]  med width=0.0226 [0.0218,0.0238]
+    Jeffreys+cost | Bonferroni alpha/K report=0.5100 [0.4600,0.5575]  conditional=1.0000 [1.0000,1.0000]  joint=0.5100 [0.4600,0.5600]  med width=0.0340 [0.0334,0.0350]
+
+[ucb_fieller] raw delta with a hand-set sample-size screen n>=n0 (descriptive ablation)
+  Fieller own screen: report=0.3259 [0.3173,0.3348] conditional=0.9530 [0.9459,0.9600] joint=0.3106 [0.3022,0.3192] med width=0.0712 [0.0697,0.0727]
+  n0=  2 report=1.0000 [1.0000,1.0000] conditional=0.3103 [0.3020,0.3185] joint=0.3103 [0.3017,0.3190] med width=0.0000 [0.0000,0.0000] agree=0.326 jaccard=0.326 delta cov on screen-only units=0.0005 [0.0000,0.0011] (frac 0.674)
+  n0=  3 report=0.3258 [0.3171,0.3347] conditional=0.9520 [0.9450,0.9594] joint=0.3102 [0.3019,0.3186] med width=0.0698 [0.0684,0.0713] agree=0.999 jaccard=0.998 delta cov on screen-only units=1.0000 [0.0000,1.0000] (frac 0.000)
+  n0=  4 report=0.3176 [0.3091,0.3259] conditional=0.9508 [0.9434,0.9582] joint=0.3020 [0.2938,0.3103] med width=0.0688 [0.0675,0.0702] agree=0.992 jaccard=0.974 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0=  5 report=0.3049 [0.2964,0.3134] conditional=0.9488 [0.9408,0.9565] joint=0.2893 [0.2811,0.2973] med width=0.0675 [0.0660,0.0687] agree=0.979 jaccard=0.935 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0=  6 report=0.2841 [0.2761,0.2924] conditional=0.9454 [0.9374,0.9535] joint=0.2685 [0.2609,0.2765] med width=0.0649 [0.0635,0.0662] agree=0.958 jaccard=0.872 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0=  8 report=0.2425 [0.2351,0.2499] conditional=0.9377 [0.9281,0.9466] joint=0.2274 [0.2201,0.2347] med width=0.0588 [0.0574,0.0608] agree=0.917 jaccard=0.744 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0= 10 report=0.2073 [0.2006,0.2141] conditional=0.9296 [0.9193,0.9407] joint=0.1927 [0.1865,0.1990] med width=0.0532 [0.0517,0.0553] agree=0.881 jaccard=0.636 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0= 15 report=0.1609 [0.1547,0.1673] conditional=0.9178 [0.9052,0.9302] joint=0.1477 [0.1416,0.1539] med width=0.0442 [0.0419,0.0465] agree=0.835 jaccard=0.494 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0= 20 report=0.1349 [0.1295,0.1401] conditional=0.9135 [0.8994,0.9274] joint=0.1232 [0.1183,0.1283] med width=0.0370 [0.0345,0.0388] agree=0.809 jaccard=0.414 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  n0= 30 report=0.1075 [0.1027,0.1124] conditional=0.9079 [0.8918,0.9245] joint=0.0976 [0.0929,0.1024] med width=0.0284 [0.0263,0.0307] agree=0.782 jaccard=0.330 delta cov on screen-only units=nan [nan,nan] (frac 0.000)
+  screen with report rate closest to Fieller: n0=3 (chosen on this collection; descriptive)
+  Fieller report rate by sample size bucket:
+    n in [2,2]: units=0.674 report=0.0006 [0.0002,0.0012]  P(s_rr=0)=1.000
+    n in [3,4]: units=0.021 report=0.9851 [0.9660,1.0000]  P(s_rr=0)=0.000
+    n in [5,9]: units=0.098 report=1.0000 [1.0000,1.0000]  P(s_rr=0)=0.000
+    n in [10,19]: units=0.072 report=1.0000 [1.0000,1.0000]  P(s_rr=0)=0.000
+    n in [20,49]: units=0.053 report=1.0000 [1.0000,1.0000]  P(s_rr=0)=0.000
+    n in [50,inf]: units=0.082 report=1.0000 [1.0000,1.0000]  P(s_rr=0)=0.000
+
+[uniform] selected-arm study; one selected unit per trajectory; MC=400
+  rule: argmax empirical ratio (n>=2)       P(selected == true best)=0.400  median n(selected)=29  min n=14
+    Fieller | per-arm alpha          report=1.0000 [1.0000,1.0000]  conditional=0.8675 [0.8325,0.9000]  joint=0.8675 [0.8325,0.9000]  med width=0.0963 [0.0941,0.0986]
+    Fieller | Bonferroni alpha/K     report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.1799 [0.1749,0.1846]
+    raw delta | per-arm alpha        report=1.0000 [1.0000,1.0000]  conditional=0.8650 [0.8300,0.8975]  joint=0.8650 [0.8300,0.8975]  med width=0.0956 [0.0932,0.0978]
+    raw delta | Bonferroni alpha/K   report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.1760 [0.1714,0.1803]
+    delta-JV | per-arm alpha         report=1.0000 [1.0000,1.0000]  conditional=0.8650 [0.8300,0.8975]  joint=0.8650 [0.8300,0.8975]  med width=0.0958 [0.0936,0.0981]
+    delta-JV | Bonferroni alpha/K    report=1.0000 [1.0000,1.0000]  conditional=0.9975 [0.9925,1.0000]  joint=0.9975 [0.9925,1.0000]  med width=0.1763 [0.1722,0.1812]
+    Jeffreys+cost | per-arm alpha    report=1.0000 [1.0000,1.0000]  conditional=0.9450 [0.9200,0.9650]  joint=0.9450 [0.9225,0.9650]  med width=0.1352 [0.1334,0.1387]
+    Jeffreys+cost | Bonferroni alpha/K report=1.0000 [1.0000,1.0000]  conditional=0.9950 [0.9875,1.0000]  joint=0.9950 [0.9875,1.0000]  med width=0.2180 [0.2140,0.2229]
+  rule: most pulled arm                     P(selected == true best)=0.030  median n(selected)=41  min n=35
+    Fieller | per-arm alpha          report=0.9875 [0.9750,0.9975]  conditional=0.9139 [0.8855,0.9419]  joint=0.9025 [0.8725,0.9325]  med width=0.0332 [0.0310,0.0359]
+    Fieller | Bonferroni alpha/K     report=0.9875 [0.9750,0.9975]  conditional=0.9848 [0.9721,0.9950]  joint=0.9725 [0.9550,0.9875]  med width=0.0606 [0.0563,0.0656]
+    raw delta | per-arm alpha        report=1.0000 [1.0000,1.0000]  conditional=0.9000 [0.8700,0.9275]  joint=0.9000 [0.8700,0.9275]  med width=0.0330 [0.0308,0.0355]
+    raw delta | Bonferroni alpha/K   report=1.0000 [1.0000,1.0000]  conditional=0.9675 [0.9475,0.9825]  joint=0.9675 [0.9500,0.9850]  med width=0.0596 [0.0555,0.0640]
+    delta-JV | per-arm alpha         report=1.0000 [1.0000,1.0000]  conditional=0.9125 [0.8825,0.9375]  joint=0.9125 [0.8825,0.9400]  med width=0.0338 [0.0318,0.0357]
+    delta-JV | Bonferroni alpha/K    report=1.0000 [1.0000,1.0000]  conditional=0.9800 [0.9650,0.9925]  joint=0.9800 [0.9650,0.9925]  med width=0.0612 [0.0574,0.0645]
+    Jeffreys+cost | per-arm alpha    report=1.0000 [1.0000,1.0000]  conditional=0.9725 [0.9550,0.9875]  joint=0.9725 [0.9550,0.9875]  med width=0.0452 [0.0416,0.0489]
+    Jeffreys+cost | Bonferroni alpha/K report=1.0000 [1.0000,1.0000]  conditional=1.0000 [1.0000,1.0000]  joint=1.0000 [1.0000,1.0000]  med width=0.0740 [0.0684,0.0797]
+  rule: fixed true-best arm (reference)     P(selected == true best)=1.000  median n(selected)=30  min n=14
+    Fieller | per-arm alpha          report=1.0000 [1.0000,1.0000]  conditional=0.9100 [0.8800,0.9375]  joint=0.9100 [0.8825,0.9375]  med width=0.0855 [0.0840,0.0869]
+    Fieller | Bonferroni alpha/K     report=1.0000 [1.0000,1.0000]  conditional=0.9925 [0.9825,1.0000]  joint=0.9925 [0.9825,1.0000]  med width=0.1592 [0.1554,0.1627]
+    raw delta | per-arm alpha        report=1.0000 [1.0000,1.0000]  conditional=0.9025 [0.8725,0.9300]  joint=0.9025 [0.8725,0.9300]  med width=0.0848 [0.0831,0.0864]
+    raw delta | Bonferroni alpha/K   report=1.0000 [1.0000,1.0000]  conditional=0.9900 [0.9800,0.9975]  joint=0.9900 [0.9800,0.9975]  med width=0.1560 [0.1526,0.1587]
+    delta-JV | per-arm alpha         report=1.0000 [1.0000,1.0000]  conditional=0.9125 [0.8825,0.9400]  joint=0.9125 [0.8850,0.9400]  med width=0.0860 [0.0840,0.0870]
+    delta-JV | Bonferroni alpha/K    report=1.0000 [1.0000,1.0000]  conditional=0.9950 [0.9875,1.0000]  joint=0.9950 [0.9875,1.0000]  med width=0.1572 [0.1535,0.1599]
+    Jeffreys+cost | per-arm alpha    report=1.0000 [1.0000,1.0000]  conditional=0.9875 [0.9750,0.9975]  joint=0.9875 [0.9750,0.9975]  med width=0.1181 [0.1159,0.1208]
+    Jeffreys+cost | Bonferroni alpha/K report=1.0000 [1.0000,1.0000]  conditional=1.0000 [1.0000,1.0000]  joint=1.0000 [1.0000,1.0000]  med width=0.1913 [0.1873,0.1956]
+
+[uniform] raw delta with a hand-set sample-size screen n>=n0 (descriptive ablation)
+  Fieller own screen: report=0.9756 [0.9726,0.9785] conditional=0.9038 [0.8980,0.9098] joint=0.8818 [0.8752,0.8880] med width=0.0434 [0.0428,0.0442]
+  n0=  2 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8737,0.8857] joint=0.8798 [0.8735,0.8862] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0=  3 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8735,0.8858] joint=0.8798 [0.8736,0.8862] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0=  4 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8734,0.8860] joint=0.8798 [0.8735,0.8860] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0=  5 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8735,0.8860] joint=0.8798 [0.8735,0.8864] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0=  6 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8733,0.8861] joint=0.8798 [0.8734,0.8861] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0=  8 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8738,0.8861] joint=0.8798 [0.8734,0.8861] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0= 10 report=1.0000 [1.0000,1.0000] conditional=0.8798 [0.8731,0.8861] joint=0.8798 [0.8739,0.8860] med width=0.0424 [0.0417,0.0430] agree=0.976 jaccard=0.976 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0= 15 report=0.9986 [0.9979,0.9993] conditional=0.8797 [0.8735,0.8859] joint=0.8785 [0.8721,0.8848] med width=0.0424 [0.0417,0.0430] agree=0.974 jaccard=0.974 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.024)
+  n0= 20 report=0.9796 [0.9769,0.9822] conditional=0.8804 [0.8741,0.8864] joint=0.8624 [0.8557,0.8691] med width=0.0421 [0.0414,0.0428] agree=0.958 jaccard=0.958 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.023)
+  n0= 30 report=0.5228 [0.5160,0.5295] conditional=0.8850 [0.8769,0.8934] joint=0.4627 [0.4555,0.4698] med width=0.0396 [0.0387,0.0405] agree=0.528 jaccard=0.521 delta cov on screen-only units=0.0000 [0.0000,0.0000] (frac 0.010)
+  screen with report rate closest to Fieller: n0=20 (chosen on this collection; descriptive)
+  Fieller report rate by sample size bucket:
+    n in [10,19]: units=0.020 report=0.9235 [0.8846,0.9579]  P(s_rr=0)=0.077
+    n in [20,49]: units=0.979 report=0.9767 [0.9738,0.9795]  P(s_rr=0)=0.023
+    n in [50,inf]: units=0.000 report=1.0000 [0.0000,1.0000]  P(s_rr=0)=0.000
+
+written: <repo>/experiments/icassp_r3_selection_results.json

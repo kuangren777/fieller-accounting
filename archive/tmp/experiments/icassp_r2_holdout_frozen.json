@@ -1,0 +1,71 @@
+{
+  "study": "ICASSP R2 frozen independent-seed simulation holdout",
+  "status": "frozen-before-execution",
+  "frozen_at_utc": "2026-09-13T00:00:00Z",
+  "script_sha256": "a4a2afb6a1fc33ba99b156b9fc96128a2b9806394289f1577695bfba2ecb9bbb",
+  "K": 24,
+  "MC": 400,
+  "sigma": 0.35,
+  "gamma": 0.0,
+  "alpha": 0.1,
+  "budget_multiplier": 30,
+  "environment_seed": 1,
+  "seed_start": 910000,
+  "seed_end": 910399,
+  "cluster_bootstrap_replicates": 4000,
+  "policies": [
+    "ucb_fieller",
+    "uniform"
+  ],
+  "policy_display_names": {
+    "ucb_fieller": "adaptive UCB with delta fallback",
+    "uniform": "uniform control"
+  },
+  "methods": [
+    "Fieller",
+    "raw delta",
+    "delta-JV",
+    "Jeffreys+cost"
+  ],
+  "score_lambdas": [
+    0.1,
+    0.5,
+    1.0
+  ],
+  "primary_estimands": [
+    "report rate",
+    "conditional coverage among finite reports",
+    "joint coverage",
+    "coverage on common Fieller-finite set",
+    "finite-report width quartiles"
+  ],
+  "common_D_role": "descriptive accounting set only",
+  "confirmatory_family": {
+    "policy": "adaptive UCB with delta fallback at budget 30x",
+    "comparisons": [
+      "Fieller vs raw delta: common-F coverage",
+      "Fieller vs delta-JV: common-F coverage",
+      "Fieller vs Jeffreys+cost: common-F coverage",
+      "Fieller vs raw delta: all-unit S_lambda at lambda=0.50",
+      "Fieller vs delta-JV: all-unit S_lambda at lambda=0.50",
+      "Fieller vs Jeffreys+cost: all-unit S_lambda at lambda=0.50"
+    ],
+    "test": "two-sided Wilcoxon signed-rank on one summary per independent trajectory",
+    "multiplicity": "Holm adjustment over exactly six tests"
+  },
+  "descriptive_only": [
+    "uniform control comparisons",
+    "score sensitivity at lambda=0.10 and lambda=1.00",
+    "scheduler fallback rates and reason decomposition",
+    "common-D accounting"
+  ],
+  "scope": "fixed-arm ratios under frozen policies",
+  "excluded_claims": [
+    "validity under adaptive allocation",
+    "validity under optional stopping",
+    "post-selection or selected-arm validity",
+    "external-data validation",
+    "universal superiority of any interval"
+  ],
+  "execution_rule": "The script digest and all fields above must match before the first holdout trajectory is collected. The configuration will not be changed in response to holdout outcomes."
+}

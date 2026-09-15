@@ -1,0 +1,247 @@
+configs=84 todo=60 nproc=40
+  done ('J', 'ucb_fieller_delta', 101, 30) 5s
+  done ('J', 'uniform', 101, 30) 6s
+  done ('J', 'ucb_fieller_delta', 102, 30) 9s
+  done ('J', 'uniform', 102, 30) 10s
+  done ('J', 'ucb_fieller_delta', 103, 30) 12s
+  done ('J', 'uniform', 103, 30) 13s
+  done ('J', 'ucb_fieller_delta', 104, 30) 16s
+  done ('J', 'uniform', 104, 30) 17s
+  done ('J', 'ucb_fieller_delta', 105, 30) 19s
+  done ('J', 'uniform', 105, 30) 20s
+  done ('J', 'ucb_fieller_delta', 106, 30) 22s
+  done ('J', 'uniform', 106, 30) 23s
+  done ('J', 'ucb_fieller_delta', 107, 30) 26s
+  done ('J', 'uniform', 107, 30) 27s
+  done ('J', 'ucb_fieller_delta', 108, 30) 29s
+  done ('J', 'uniform', 108, 30) 30s
+  done ('J', 'ucb_fieller_delta', 109, 30) 33s
+  done ('J', 'uniform', 109, 30) 34s
+  done ('J', 'ucb_fieller_delta', 110, 30) 36s
+  done ('J', 'uniform', 110, 30) 37s
+  done ('J', 'ucb_fieller_delta', 111, 30) 40s
+  done ('J', 'uniform', 111, 30) 41s
+  done ('J', 'ucb_fieller_delta', 112, 30) 43s
+  done ('J', 'uniform', 112, 30) 45s
+  done ('J', 'ucb_fieller_delta', 113, 30) 47s
+  done ('J', 'uniform', 113, 30) 48s
+  done ('J', 'ucb_fieller_delta', 114, 30) 51s
+  done ('J', 'uniform', 114, 30) 52s
+  done ('J', 'ucb_fieller_delta', 115, 30) 54s
+  done ('J', 'uniform', 115, 30) 56s
+  done ('J', 'ucb_fieller_delta', 116, 30) 59s
+  done ('J', 'uniform', 116, 30) 60s
+  done ('J', 'ucb_fieller_delta', 117, 30) 62s
+  done ('J', 'uniform', 117, 30) 64s
+  done ('J', 'ucb_fieller_delta', 118, 30) 67s
+  done ('J', 'uniform', 118, 30) 68s
+  done ('J', 'ucb_fieller_delta', 119, 30) 71s
+  done ('J', 'uniform', 119, 30) 72s
+  done ('J', 'ucb_fieller_delta', 120, 30) 75s
+  done ('J', 'uniform', 120, 30) 77s
+  done ('J', 'ucb_fieller_delta', 121, 30) 80s
+  done ('J', 'uniform', 121, 30) 81s
+  done ('J', 'ucb_fieller_delta', 122, 30) 84s
+  done ('J', 'uniform', 122, 30) 85s
+  done ('J', 'ucb_fieller_delta', 123, 30) 88s
+  done ('J', 'uniform', 123, 30) 89s
+  done ('J', 'ucb_fieller_delta', 124, 30) 92s
+  done ('J', 'uniform', 124, 30) 94s
+  done ('J', 'ucb_fieller_delta', 125, 30) 97s
+  done ('J', 'uniform', 125, 30) 98s
+  done ('J', 'ucb_fieller_delta', 126, 30) 101s
+  done ('J', 'uniform', 126, 30) 103s
+  done ('J', 'ucb_fieller_delta', 127, 30) 106s
+  done ('J', 'uniform', 127, 30) 107s
+  done ('J', 'ucb_fieller_delta', 128, 30) 110s
+  done ('J', 'uniform', 128, 30) 111s
+  done ('J', 'ucb_fieller_delta', 129, 30) 114s
+  done ('J', 'uniform', 129, 30) 116s
+  done ('J', 'ucb_fieller_delta', 130, 30) 119s
+  done ('J', 'uniform', 130, 30) 120s
+A|ucb_fieller_delta|env1|30x         rep=0.330 cond=0.960 joint=0.317 | n2zero obs=0.669 pred=0.671 | reward=289.8 | dJV rep=1.000 cond=0.987
+   selection: ident=0.405 split-ident=0.310 | Fieller naive cond=0.902 bonf=0.995 split cond=0.891 (rep 0.920) width naive/split=0.0147/0.0212
+A|ucb_fieller_jv|env1|30x            rep=0.528 cond=0.966 joint=0.510 | n2zero obs=0.001 pred=0.671 | reward=295.9 | dJV rep=1.000 cond=0.967
+   selection: ident=0.588 split-ident=0.390 | Fieller naive cond=0.905 bonf=0.998 split cond=0.851 (rep 0.890) width naive/split=0.0166/0.0257
+A|ucb_fieller_inf|env1|30x           rep=0.999 cond=0.927 joint=0.926 | n2zero obs=0.000 pred=0.671 | reward=259.4 | dJV rep=1.000 cond=0.938
+   selection: ident=0.527 split-ident=0.357 | Fieller naive cond=0.932 bonf=0.998 split cond=0.875 (rep 0.863) width naive/split=0.0188/0.0287
+A|ucb_jv|env1|30x                    rep=0.532 cond=0.962 joint=0.512 | n2zero obs=0.001 pred=0.671 | reward=296.0 | dJV rep=1.000 cond=0.964
+   selection: ident=0.583 split-ident=0.393 | Fieller naive cond=0.915 bonf=0.998 split cond=0.893 (rep 0.845) width naive/split=0.0167/0.0249
+A|uniform|env1|30x                   rep=0.974 cond=0.900 joint=0.877 | n2zero obs=0.000 pred=0.671 | reward=132.4 | dJV rep=1.000 cond=0.883
+   selection: ident=0.357 split-ident=0.273 | Fieller naive cond=0.850 bonf=1.000 split cond=0.923 (rep 0.970) width naive/split=0.0974/0.1274
+B|ucb_fieller_delta|env1|5x          rep=0.327 cond=0.967 joint=0.316 | n2zero obs=0.669 pred=0.671 | reward=33.1 | dJV rep=1.000 cond=0.989
+   selection: ident=0.310 split-ident=0.195 | Fieller naive cond=0.875 bonf=0.997 split cond=0.939 (rep 0.772) width naive/split=0.0663/0.0939
+B|uniform|env1|5x                    rep=0.571 cond=0.981 joint=0.560 | n2zero obs=0.045 pred=0.671 | reward=22.4 | dJV rep=0.982 cond=0.954
+   selection: ident=0.212 split-ident=0.160 | Fieller naive cond=0.884 bonf=0.984 split cond=0.922 (rep 0.193) width naive/split=0.3807/0.7436
+B|ucb_fieller_delta|env1|10x         rep=0.329 cond=0.964 joint=0.317 | n2zero obs=0.669 pred=0.671 | reward=81.2 | dJV rep=1.000 cond=0.988
+   selection: ident=0.362 split-ident=0.255 | Fieller naive cond=0.887 bonf=0.997 split cond=0.906 (rep 0.848) width naive/split=0.0325/0.0475
+B|uniform|env1|10x                   rep=0.804 cond=0.958 joint=0.770 | n2zero obs=0.001 pred=0.671 | reward=44.6 | dJV rep=1.000 cond=0.904
+   selection: ident=0.247 split-ident=0.195 | Fieller naive cond=0.843 bonf=0.992 split cond=0.972 (rep 0.625) width naive/split=0.2061/0.3109
+B|ucb_fieller_delta|env1|100x        rep=0.330 cond=0.956 joint=0.316 | n2zero obs=0.669 pred=0.671 | reward=1047.4 | dJV rep=1.000 cond=0.985
+   selection: ident=0.440 split-ident=0.362 | Fieller naive cond=0.875 bonf=0.995 split cond=0.856 (rep 0.953) width naive/split=0.0074/0.0106
+B|uniform|env1|100x                  rep=1.000 cond=0.895 joint=0.895 | n2zero obs=0.000 pred=0.671 | reward=440.2 | dJV rep=1.000 cond=0.897
+   selection: ident=0.475 split-ident=0.427 | Fieller naive cond=0.887 bonf=0.998 split cond=0.887 (rep 1.000) width naive/split=0.0500/0.0656
+C|ucb_fieller_delta|env2|30x         rep=0.331 cond=0.963 joint=0.319 | n2zero obs=0.668 pred=0.668 | reward=311.0 | dJV rep=1.000 cond=0.988
+   selection: ident=0.537 split-ident=0.427 | Fieller naive cond=0.930 bonf=0.998 split cond=0.913 (rep 0.920) width naive/split=0.0148/0.0213
+C|uniform|env2|30x                   rep=0.970 cond=0.903 joint=0.876 | n2zero obs=0.000 pred=0.668 | reward=132.9 | dJV rep=1.000 cond=0.883
+   selection: ident=0.482 split-ident=0.375 | Fieller naive cond=0.873 bonf=1.000 split cond=0.910 (rep 0.978) width naive/split=0.0977/0.1306
+C|ucb_fieller_delta|env3|30x         rep=0.330 cond=0.956 joint=0.316 | n2zero obs=0.669 pred=0.672 | reward=267.7 | dJV rep=1.000 cond=0.986
+   selection: ident=0.278 split-ident=0.233 | Fieller naive cond=0.905 bonf=0.993 split cond=0.880 (rep 0.920) width naive/split=0.0147/0.0213
+C|uniform|env3|30x                   rep=0.971 cond=0.901 joint=0.875 | n2zero obs=0.000 pred=0.672 | reward=131.9 | dJV rep=1.000 cond=0.882
+   selection: ident=0.268 split-ident=0.188 | Fieller naive cond=0.858 bonf=0.998 split cond=0.912 (rep 0.970) width naive/split=0.0911/0.1154
+C|ucb_fieller_delta|env4|30x         rep=0.343 cond=0.953 joint=0.327 | n2zero obs=0.656 pred=0.658 | reward=323.3 | dJV rep=1.000 cond=0.985
+   selection: ident=0.470 split-ident=0.372 | Fieller naive cond=0.905 bonf=0.993 split cond=0.889 (rep 0.897) width naive/split=0.0152/0.0220
+C|uniform|env4|30x                   rep=0.976 cond=0.905 joint=0.883 | n2zero obs=0.000 pred=0.658 | reward=138.0 | dJV rep=1.000 cond=0.889
+   selection: ident=0.415 split-ident=0.318 | Fieller naive cond=0.873 bonf=1.000 split cond=0.900 (rep 0.975) width naive/split=0.0987/0.1303
+H|ucb_bv1|env1|30x                   rep=0.963 cond=0.905 joint=0.872 | n2zero obs=0.000 pred=0.671 | reward=141.2 | dJV rep=1.000 cond=0.878
+H|ucb_bv2|env1|30x                   rep=0.962 cond=0.903 joint=0.869 | n2zero obs=0.000 pred=0.671 | reward=145.2 | dJV rep=1.000 cond=0.873
+H|kube_knapsack|env1|30x             rep=0.849 cond=0.922 joint=0.783 | n2zero obs=0.005 pred=0.671 | reward=217.0 | dJV rep=0.998 cond=0.890
+H|thompson_ratio|env1|30x            rep=0.701 cond=0.933 joint=0.654 | n2zero obs=0.023 pred=0.671 | reward=256.4 | dJV rep=0.946 cond=0.900
+H|eps_greedy_ratio|env1|30x          rep=0.597 cond=0.978 joint=0.584 | n2zero obs=0.043 pred=0.671 | reward=267.4 | dJV rep=0.986 cond=0.946
+H|greedy_ratio|env1|30x              rep=0.166 cond=0.957 joint=0.159 | n2zero obs=0.000 pred=0.671 | reward=263.3 | dJV rep=0.177 cond=0.959
+H|ucb_delta|env1|30x                 rep=0.330 cond=0.958 joint=0.317 | n2zero obs=0.669 pred=0.671 | reward=290.2 | dJV rep=1.000 cond=0.987
+J|ucb_fieller_delta|env101|30x       rep=0.340 cond=0.960 joint=0.326 | n2zero obs=0.659 pred=0.669 | reward=271.3 | dJV rep=1.000 cond=0.987
+   selection: ident=0.270 split-ident=0.210 | Fieller naive cond=0.910 bonf=0.990 split cond=0.878 (rep 0.900) width naive/split=0.0151/0.0220
+J|uniform|env101|30x                 rep=0.976 cond=0.901 joint=0.880 | n2zero obs=0.000 pred=0.669 | reward=131.7 | dJV rep=1.000 cond=0.883
+   selection: ident=0.260 split-ident=0.190 | Fieller naive cond=0.840 bonf=1.000 split cond=0.946 (rep 0.930) width naive/split=0.0955/0.1236
+J|ucb_fieller_delta|env102|30x       rep=0.321 cond=0.952 joint=0.305 | n2zero obs=0.677 pred=0.663 | reward=303.9 | dJV rep=1.000 cond=0.985
+   selection: ident=0.420 split-ident=0.350 | Fieller naive cond=0.850 bonf=1.000 split cond=0.837 (rep 0.980) width naive/split=0.0148/0.0213
+J|uniform|env102|30x                 rep=0.976 cond=0.920 joint=0.898 | n2zero obs=0.000 pred=0.663 | reward=137.8 | dJV rep=1.000 cond=0.903
+   selection: ident=0.350 split-ident=0.260 | Fieller naive cond=0.850 bonf=1.000 split cond=0.929 (rep 0.990) width naive/split=0.0949/0.1270
+J|ucb_fieller_delta|env103|30x       rep=0.327 cond=0.962 joint=0.315 | n2zero obs=0.671 pred=0.672 | reward=308.3 | dJV rep=1.000 cond=0.988
+   selection: ident=0.430 split-ident=0.380 | Fieller naive cond=0.900 bonf=0.990 split cond=0.876 (rep 0.890) width naive/split=0.0146/0.0211
+J|uniform|env103|30x                 rep=0.975 cond=0.914 joint=0.891 | n2zero obs=0.000 pred=0.672 | reward=135.4 | dJV rep=1.000 cond=0.897
+   selection: ident=0.360 split-ident=0.400 | Fieller naive cond=0.840 bonf=1.000 split cond=0.909 (rep 0.990) width naive/split=0.0990/0.1289
+J|ucb_fieller_delta|env104|30x       rep=0.328 cond=0.962 joint=0.315 | n2zero obs=0.670 pred=0.669 | reward=285.5 | dJV rep=1.000 cond=0.986
+   selection: ident=0.330 split-ident=0.310 | Fieller naive cond=0.930 bonf=0.990 split cond=0.824 (rep 0.910) width naive/split=0.0149/0.0217
+J|uniform|env104|30x                 rep=0.978 cond=0.909 joint=0.889 | n2zero obs=0.000 pred=0.669 | reward=133.1 | dJV rep=1.000 cond=0.900
+   selection: ident=0.510 split-ident=0.410 | Fieller naive cond=0.870 bonf=0.990 split cond=0.948 (rep 0.970) width naive/split=0.0966/0.1286
+J|ucb_fieller_delta|env105|30x       rep=0.323 cond=0.965 joint=0.311 | n2zero obs=0.677 pred=0.666 | reward=313.9 | dJV rep=1.000 cond=0.989
+   selection: ident=0.470 split-ident=0.420 | Fieller naive cond=0.910 bonf=1.000 split cond=0.936 (rep 0.940) width naive/split=0.0150/0.0215
+J|uniform|env105|30x                 rep=0.972 cond=0.895 joint=0.869 | n2zero obs=0.000 pred=0.666 | reward=137.8 | dJV rep=1.000 cond=0.878
+   selection: ident=0.530 split-ident=0.470 | Fieller naive cond=0.760 bonf=1.000 split cond=0.910 (rep 1.000) width naive/split=0.0983/0.1279
+J|ucb_fieller_delta|env106|30x       rep=0.315 cond=0.964 joint=0.303 | n2zero obs=0.684 pred=0.681 | reward=252.6 | dJV rep=1.000 cond=0.989
+   selection: ident=0.410 split-ident=0.320 | Fieller naive cond=0.940 bonf=1.000 split cond=0.922 (rep 0.900) width naive/split=0.0143/0.0208
+J|uniform|env106|30x                 rep=0.968 cond=0.905 joint=0.877 | n2zero obs=0.000 pred=0.681 | reward=125.1 | dJV rep=1.000 cond=0.885
+   selection: ident=0.280 split-ident=0.230 | Fieller naive cond=0.840 bonf=1.000 split cond=0.935 (rep 0.920) width naive/split=0.0958/0.1147
+J|ucb_fieller_delta|env107|30x       rep=0.333 cond=0.960 joint=0.320 | n2zero obs=0.666 pred=0.672 | reward=302.9 | dJV rep=1.000 cond=0.987
+   selection: ident=0.520 split-ident=0.450 | Fieller naive cond=0.900 bonf=1.000 split cond=0.833 (rep 0.960) width naive/split=0.0149/0.0214
+J|uniform|env107|30x                 rep=0.974 cond=0.905 joint=0.881 | n2zero obs=0.000 pred=0.672 | reward=131.8 | dJV rep=1.000 cond=0.887
+   selection: ident=0.470 split-ident=0.310 | Fieller naive cond=0.880 bonf=1.000 split cond=0.898 (rep 0.980) width naive/split=0.0953/0.1215
+J|ucb_fieller_delta|env108|30x       rep=0.341 cond=0.954 joint=0.325 | n2zero obs=0.656 pred=0.671 | reward=266.9 | dJV rep=1.000 cond=0.984
+   selection: ident=0.380 split-ident=0.320 | Fieller naive cond=0.900 bonf=0.990 split cond=0.812 (rep 0.960) width naive/split=0.0150/0.0218
+J|uniform|env108|30x                 rep=0.972 cond=0.903 joint=0.878 | n2zero obs=0.000 pred=0.671 | reward=133.8 | dJV rep=1.000 cond=0.885
+   selection: ident=0.390 split-ident=0.400 | Fieller naive cond=0.760 bonf=0.990 split cond=0.848 (rep 0.990) width naive/split=0.0932/0.1134
+J|ucb_fieller_delta|env109|30x       rep=0.344 cond=0.954 joint=0.328 | n2zero obs=0.655 pred=0.663 | reward=273.9 | dJV rep=1.000 cond=0.985
+   selection: ident=0.480 split-ident=0.350 | Fieller naive cond=0.900 bonf=1.000 split cond=0.891 (rep 0.920) width naive/split=0.0148/0.0213
+J|uniform|env109|30x                 rep=0.975 cond=0.902 joint=0.879 | n2zero obs=0.000 pred=0.663 | reward=139.5 | dJV rep=1.000 cond=0.888
+   selection: ident=0.380 split-ident=0.330 | Fieller naive cond=0.790 bonf=1.000 split cond=0.929 (rep 0.990) width naive/split=0.0884/0.1143
+J|ucb_fieller_delta|env110|30x       rep=0.328 cond=0.959 joint=0.315 | n2zero obs=0.672 pred=0.665 | reward=298.4 | dJV rep=1.000 cond=0.986
+   selection: ident=0.380 split-ident=0.320 | Fieller naive cond=0.920 bonf=1.000 split cond=0.921 (rep 0.890) width naive/split=0.0146/0.0210
+J|uniform|env110|30x                 rep=0.971 cond=0.895 joint=0.869 | n2zero obs=0.000 pred=0.665 | reward=132.7 | dJV rep=1.000 cond=0.877
+   selection: ident=0.330 split-ident=0.230 | Fieller naive cond=0.840 bonf=1.000 split cond=0.862 (rep 0.940) width naive/split=0.0976/0.1215
+J|ucb_fieller_delta|env111|30x       rep=0.320 cond=0.956 joint=0.305 | n2zero obs=0.679 pred=0.667 | reward=326.0 | dJV rep=1.000 cond=0.986
+   selection: ident=0.570 split-ident=0.460 | Fieller naive cond=0.890 bonf=1.000 split cond=0.856 (rep 0.900) width naive/split=0.0149/0.0215
+J|uniform|env111|30x                 rep=0.974 cond=0.903 joint=0.880 | n2zero obs=0.000 pred=0.667 | reward=136.3 | dJV rep=1.000 cond=0.887
+   selection: ident=0.400 split-ident=0.300 | Fieller naive cond=0.850 bonf=1.000 split cond=0.898 (rep 0.980) width naive/split=0.0972/0.1276
+J|ucb_fieller_delta|env112|30x       rep=0.347 cond=0.966 joint=0.335 | n2zero obs=0.653 pred=0.665 | reward=268.0 | dJV rep=1.000 cond=0.988
+   selection: ident=0.250 split-ident=0.180 | Fieller naive cond=0.980 bonf=1.000 split cond=0.909 (rep 0.990) width naive/split=0.0148/0.0217
+J|uniform|env112|30x                 rep=0.966 cond=0.911 joint=0.880 | n2zero obs=0.000 pred=0.665 | reward=135.9 | dJV rep=1.000 cond=0.886
+   selection: ident=0.300 split-ident=0.300 | Fieller naive cond=0.800 bonf=1.000 split cond=0.859 (rep 0.990) width naive/split=0.0909/0.1175
+J|ucb_fieller_delta|env113|30x       rep=0.325 cond=0.967 joint=0.315 | n2zero obs=0.673 pred=0.666 | reward=302.0 | dJV rep=1.000 cond=0.989
+   selection: ident=0.520 split-ident=0.450 | Fieller naive cond=0.910 bonf=1.000 split cond=0.900 (rep 0.900) width naive/split=0.0149/0.0213
+J|uniform|env113|30x                 rep=0.968 cond=0.904 joint=0.875 | n2zero obs=0.000 pred=0.666 | reward=134.8 | dJV rep=1.000 cond=0.888
+   selection: ident=0.580 split-ident=0.430 | Fieller naive cond=0.850 bonf=1.000 split cond=0.918 (rep 0.970) width naive/split=0.0924/0.1173
+J|ucb_fieller_delta|env114|30x       rep=0.340 cond=0.957 joint=0.325 | n2zero obs=0.658 pred=0.671 | reward=290.8 | dJV rep=1.000 cond=0.985
+   selection: ident=0.400 split-ident=0.320 | Fieller naive cond=0.900 bonf=1.000 split cond=0.902 (rep 0.920) width naive/split=0.0148/0.0212
+J|uniform|env114|30x                 rep=0.975 cond=0.898 joint=0.876 | n2zero obs=0.000 pred=0.671 | reward=138.5 | dJV rep=1.000 cond=0.883
+   selection: ident=0.340 split-ident=0.340 | Fieller naive cond=0.810 bonf=1.000 split cond=0.878 (rep 0.980) width naive/split=0.0883/0.1135
+J|ucb_fieller_delta|env115|30x       rep=0.324 cond=0.961 joint=0.312 | n2zero obs=0.675 pred=0.671 | reward=313.5 | dJV rep=1.000 cond=0.988
+   selection: ident=0.500 split-ident=0.430 | Fieller naive cond=0.930 bonf=1.000 split cond=0.916 (rep 0.950) width naive/split=0.0151/0.0215
+J|uniform|env115|30x                 rep=0.969 cond=0.902 joint=0.874 | n2zero obs=0.000 pred=0.671 | reward=135.5 | dJV rep=1.000 cond=0.884
+   selection: ident=0.670 split-ident=0.440 | Fieller naive cond=0.820 bonf=1.000 split cond=0.869 (rep 0.990) width naive/split=0.0995/0.1327
+J|ucb_fieller_delta|env116|30x       rep=0.335 cond=0.955 joint=0.320 | n2zero obs=0.664 pred=0.666 | reward=297.5 | dJV rep=1.000 cond=0.985
+   selection: ident=0.340 split-ident=0.260 | Fieller naive cond=0.880 bonf=0.990 split cond=0.896 (rep 0.960) width naive/split=0.0151/0.0220
+J|uniform|env116|30x                 rep=0.979 cond=0.895 joint=0.876 | n2zero obs=0.000 pred=0.666 | reward=133.8 | dJV rep=1.000 cond=0.882
+   selection: ident=0.330 split-ident=0.250 | Fieller naive cond=0.830 bonf=1.000 split cond=0.859 (rep 0.990) width naive/split=0.0973/0.1281
+J|ucb_fieller_delta|env117|30x       rep=0.323 cond=0.974 joint=0.314 | n2zero obs=0.674 pred=0.666 | reward=322.5 | dJV rep=1.000 cond=0.991
+   selection: ident=0.550 split-ident=0.420 | Fieller naive cond=0.910 bonf=0.990 split cond=0.901 (rep 0.910) width naive/split=0.0148/0.0211
+J|uniform|env117|30x                 rep=0.976 cond=0.899 joint=0.878 | n2zero obs=0.000 pred=0.666 | reward=136.4 | dJV rep=1.000 cond=0.886
+   selection: ident=0.440 split-ident=0.360 | Fieller naive cond=0.840 bonf=1.000 split cond=0.927 (rep 0.960) width naive/split=0.0961/0.1256
+J|ucb_fieller_delta|env118|30x       rep=0.341 cond=0.967 joint=0.330 | n2zero obs=0.657 pred=0.661 | reward=311.8 | dJV rep=1.000 cond=0.988
+   selection: ident=0.360 split-ident=0.280 | Fieller naive cond=0.920 bonf=1.000 split cond=0.909 (rep 0.880) width naive/split=0.0153/0.0224
+J|uniform|env118|30x                 rep=0.970 cond=0.909 joint=0.882 | n2zero obs=0.000 pred=0.661 | reward=134.3 | dJV rep=1.000 cond=0.888
+   selection: ident=0.340 split-ident=0.360 | Fieller naive cond=0.850 bonf=1.000 split cond=0.857 (rep 0.980) width naive/split=0.1027/0.1283
+J|ucb_fieller_delta|env119|30x       rep=0.328 cond=0.956 joint=0.313 | n2zero obs=0.670 pred=0.674 | reward=293.4 | dJV rep=1.000 cond=0.985
+   selection: ident=0.440 split-ident=0.360 | Fieller naive cond=0.850 bonf=0.990 split cond=0.870 (rep 0.920) width naive/split=0.0146/0.0209
+J|uniform|env119|30x                 rep=0.978 cond=0.898 joint=0.878 | n2zero obs=0.000 pred=0.674 | reward=129.8 | dJV rep=1.000 cond=0.884
+   selection: ident=0.270 split-ident=0.240 | Fieller naive cond=0.710 bonf=1.000 split cond=0.866 (rep 0.970) width naive/split=0.0979/0.1266
+J|ucb_fieller_delta|env120|30x       rep=0.327 cond=0.958 joint=0.313 | n2zero obs=0.671 pred=0.678 | reward=260.4 | dJV rep=1.000 cond=0.985
+   selection: ident=0.470 split-ident=0.360 | Fieller naive cond=0.870 bonf=0.990 split cond=0.912 (rep 0.910) width naive/split=0.0145/0.0216
+J|uniform|env120|30x                 rep=0.972 cond=0.907 joint=0.882 | n2zero obs=0.000 pred=0.678 | reward=129.9 | dJV rep=1.000 cond=0.887
+   selection: ident=0.410 split-ident=0.300 | Fieller naive cond=0.830 bonf=1.000 split cond=0.918 (rep 0.970) width naive/split=0.0929/0.1154
+J|ucb_fieller_delta|env121|30x       rep=0.333 cond=0.946 joint=0.315 | n2zero obs=0.665 pred=0.666 | reward=298.1 | dJV rep=1.000 cond=0.982
+   selection: ident=0.470 split-ident=0.370 | Fieller naive cond=0.900 bonf=0.990 split cond=0.915 (rep 0.940) width naive/split=0.0147/0.0211
+J|uniform|env121|30x                 rep=0.973 cond=0.911 joint=0.887 | n2zero obs=0.000 pred=0.666 | reward=134.3 | dJV rep=1.000 cond=0.894
+   selection: ident=0.470 split-ident=0.330 | Fieller naive cond=0.890 bonf=1.000 split cond=0.960 (rep 1.000) width naive/split=0.0964/0.1215
+J|ucb_fieller_delta|env122|30x       rep=0.333 cond=0.953 joint=0.318 | n2zero obs=0.667 pred=0.670 | reward=271.3 | dJV rep=1.000 cond=0.985
+   selection: ident=0.340 split-ident=0.230 | Fieller naive cond=0.890 bonf=1.000 split cond=0.905 (rep 0.950) width naive/split=0.0148/0.0215
+J|uniform|env122|30x                 rep=0.975 cond=0.887 joint=0.865 | n2zero obs=0.000 pred=0.670 | reward=136.1 | dJV rep=1.000 cond=0.875
+   selection: ident=0.310 split-ident=0.250 | Fieller naive cond=0.790 bonf=0.990 split cond=0.927 (rep 0.960) width naive/split=0.0899/0.1223
+J|ucb_fieller_delta|env123|30x       rep=0.344 cond=0.949 joint=0.326 | n2zero obs=0.655 pred=0.667 | reward=296.7 | dJV rep=1.000 cond=0.983
+   selection: ident=0.470 split-ident=0.380 | Fieller naive cond=0.870 bonf=1.000 split cond=0.890 (rep 0.910) width naive/split=0.0152/0.0222
+J|uniform|env123|30x                 rep=0.969 cond=0.904 joint=0.876 | n2zero obs=0.000 pred=0.667 | reward=135.2 | dJV rep=1.000 cond=0.887
+   selection: ident=0.490 split-ident=0.330 | Fieller naive cond=0.850 bonf=1.000 split cond=0.904 (rep 0.940) width naive/split=0.0979/0.1323
+J|ucb_fieller_delta|env124|30x       rep=0.326 cond=0.954 joint=0.311 | n2zero obs=0.672 pred=0.670 | reward=302.6 | dJV rep=1.000 cond=0.983
+   selection: ident=0.420 split-ident=0.350 | Fieller naive cond=0.850 bonf=0.990 split cond=0.826 (rep 0.920) width naive/split=0.0147/0.0210
+J|uniform|env124|30x                 rep=0.974 cond=0.899 joint=0.875 | n2zero obs=0.000 pred=0.670 | reward=129.9 | dJV rep=1.000 cond=0.883
+   selection: ident=0.330 split-ident=0.370 | Fieller naive cond=0.860 bonf=1.000 split cond=0.960 (rep 1.000) width naive/split=0.1030/0.1294
+J|ucb_fieller_delta|env125|30x       rep=0.315 cond=0.954 joint=0.300 | n2zero obs=0.683 pred=0.678 | reward=274.7 | dJV rep=1.000 cond=0.986
+   selection: ident=0.390 split-ident=0.320 | Fieller naive cond=0.870 bonf=0.990 split cond=0.870 (rep 0.920) width naive/split=0.0151/0.0218
+J|uniform|env125|30x                 rep=0.966 cond=0.902 joint=0.871 | n2zero obs=0.000 pred=0.678 | reward=126.0 | dJV rep=1.000 cond=0.879
+   selection: ident=0.490 split-ident=0.420 | Fieller naive cond=0.860 bonf=1.000 split cond=0.918 (rep 0.970) width naive/split=0.1005/0.1288
+J|ucb_fieller_delta|env126|30x       rep=0.320 cond=0.966 joint=0.309 | n2zero obs=0.679 pred=0.667 | reward=312.2 | dJV rep=1.000 cond=0.989
+   selection: ident=0.500 split-ident=0.390 | Fieller naive cond=0.910 bonf=1.000 split cond=0.860 (rep 0.930) width naive/split=0.0148/0.0215
+J|uniform|env126|30x                 rep=0.980 cond=0.906 joint=0.888 | n2zero obs=0.000 pred=0.667 | reward=135.6 | dJV rep=1.000 cond=0.895
+   selection: ident=0.430 split-ident=0.240 | Fieller naive cond=0.910 bonf=1.000 split cond=0.866 (rep 0.970) width naive/split=0.0967/0.1199
+J|ucb_fieller_delta|env127|30x       rep=0.345 cond=0.957 joint=0.330 | n2zero obs=0.654 pred=0.668 | reward=296.0 | dJV rep=1.000 cond=0.986
+   selection: ident=0.510 split-ident=0.400 | Fieller naive cond=0.890 bonf=0.990 split cond=0.859 (rep 0.920) width naive/split=0.0149/0.0214
+J|uniform|env127|30x                 rep=0.974 cond=0.907 joint=0.883 | n2zero obs=0.000 pred=0.668 | reward=132.6 | dJV rep=1.000 cond=0.890
+   selection: ident=0.470 split-ident=0.400 | Fieller naive cond=0.840 bonf=0.990 split cond=0.867 (rep 0.980) width naive/split=0.0962/0.1260
+J|ucb_fieller_delta|env128|30x       rep=0.320 cond=0.953 joint=0.305 | n2zero obs=0.677 pred=0.663 | reward=300.8 | dJV rep=1.000 cond=0.986
+   selection: ident=0.360 split-ident=0.250 | Fieller naive cond=0.900 bonf=1.000 split cond=0.920 (rep 0.880) width naive/split=0.0147/0.0209
+J|uniform|env128|30x                 rep=0.974 cond=0.892 joint=0.869 | n2zero obs=0.000 pred=0.663 | reward=137.9 | dJV rep=1.000 cond=0.876
+   selection: ident=0.390 split-ident=0.290 | Fieller naive cond=0.810 bonf=1.000 split cond=0.928 (rep 0.970) width naive/split=0.0940/0.1237
+J|ucb_fieller_delta|env129|30x       rep=0.343 cond=0.961 joint=0.330 | n2zero obs=0.656 pred=0.662 | reward=306.6 | dJV rep=1.000 cond=0.987
+   selection: ident=0.450 split-ident=0.320 | Fieller naive cond=0.890 bonf=1.000 split cond=0.849 (rep 0.930) width naive/split=0.0150/0.0218
+J|uniform|env129|30x                 rep=0.979 cond=0.903 joint=0.884 | n2zero obs=0.000 pred=0.662 | reward=136.2 | dJV rep=1.000 cond=0.891
+   selection: ident=0.580 split-ident=0.450 | Fieller naive cond=0.830 bonf=0.980 split cond=0.918 (rep 0.970) width naive/split=0.0963/0.1290
+J|ucb_fieller_delta|env130|30x       rep=0.334 cond=0.963 joint=0.321 | n2zero obs=0.666 pred=0.668 | reward=298.1 | dJV rep=1.000 cond=0.989
+   selection: ident=0.540 split-ident=0.460 | Fieller naive cond=0.870 bonf=1.000 split cond=0.867 (rep 0.900) width naive/split=0.0149/0.0215
+J|uniform|env130|30x                 rep=0.970 cond=0.894 joint=0.867 | n2zero obs=0.000 pred=0.668 | reward=132.9 | dJV rep=1.000 cond=0.873
+   selection: ident=0.460 split-ident=0.420 | Fieller naive cond=0.790 bonf=0.990 split cond=0.876 (rep 0.970) width naive/split=0.0947/0.1257
+ENVREP ucb_fieller_delta  n=30 report mean=0.331 [0.315,0.347] cond mean=0.959 [0.946,0.974] joint=0.317 deltaAll=0.959 cFgap=0.0004 [-0.0005,0.0012] truebest cond=0.845 [0.729,0.936] pred gap max=0.014
+ENVREP uniform            n=30 report mean=0.973 [0.966,0.980] cond mean=0.903 [0.887,0.920] joint=0.879 deltaAll=0.902 cFgap=0.0006 [0.0001,0.0011] truebest cond=0.899 [0.830,0.960] pred gap max=0.681
+fixed-n n= 2 Fieller engine=0.897 textbook=0.897 (report 0.213/0.159) | delta engine=0.309 textbook=0.315
+fixed-n n= 3 Fieller engine=0.983 textbook=0.983 (report 0.441/0.426) | delta engine=0.435 textbook=0.438
+fixed-n n= 5 Fieller engine=0.982 textbook=0.988 (report 0.609/0.609) | delta engine=0.596 textbook=0.600
+fixed-n n=10 Fieller engine=0.963 textbook=0.971 (report 0.818/0.818) | delta engine=0.785 textbook=0.792
+fixed-n n=30 Fieller engine=0.893 textbook=0.897 (report 0.977/0.977) | delta engine=0.869 textbook=0.874
+alpha=0.20 ucb_fieller  Fieller rep=0.326 cond=0.899 | delta cond(all)=0.898 common-F=0.898 | JC rep=0.654 cond=0.982
+alpha=0.10 ucb_fieller  Fieller rep=0.325 cond=0.956 | delta cond(all)=0.957 common-F=0.957 | JC rep=0.496 cond=0.990
+alpha=0.05 ucb_fieller  Fieller rep=0.322 cond=0.980 | delta cond(all)=0.980 common-F=0.980 | JC rep=0.407 cond=0.996
+alpha=0.01 ucb_fieller  Fieller rep=0.312 cond=0.997 | delta cond(all)=0.998 common-F=0.998 | JC rep=0.324 cond=0.999
+alpha=0.20 uniform      Fieller rep=0.976 cond=0.818 | delta cond(all)=0.819 common-F=0.819 | JC rep=1.000 cond=0.943
+alpha=0.10 uniform      Fieller rep=0.976 cond=0.908 | delta cond(all)=0.905 common-F=0.905 | JC rep=1.000 cond=0.977
+alpha=0.05 uniform      Fieller rep=0.976 cond=0.946 | delta cond(all)=0.945 common-F=0.945 | JC rep=1.000 cond=0.990
+alpha=0.01 uniform      Fieller rep=0.976 cond=0.980 | delta cond(all)=0.978 common-F=0.978 | JC rep=1.000 cond=0.999
+den t-interval lognormal  cv=0.361 pa=None: n=5 eng=0.851 unb=0.881 n=10 eng=0.870 unb=0.885 n=30 eng=0.887 unb=0.893 n=100 eng=0.895 unb=0.897
+den t-interval gamma      cv=0.361 pa=None: n=5 eng=0.865 unb=0.892 n=10 eng=0.876 unb=0.892 n=30 eng=0.889 unb=0.895 n=100 eng=0.897 unb=0.899
+den t-interval pareto     cv=0.361 pa=None: n=5 eng=0.750 unb=0.775 n=10 eng=0.783 unb=0.799 n=30 eng=0.837 unb=0.842 n=100 eng=0.866 unb=0.868
+den t-interval twopoint   cv=0.361 pa=None: n=5 eng=0.669 unb=0.669 n=10 eng=0.860 unb=0.885 n=30 eng=0.851 unb=0.851 n=100 eng=0.890 unb=0.890
+den t-interval lognormal  cv=2.913 pa=None: n=5 eng=0.607 unb=0.627 n=10 eng=0.649 unb=0.661 n=30 eng=0.731 unb=0.735 n=100 eng=0.805 unb=0.806
+den t-interval gamma      cv=2.913 pa=None: n=5 eng=0.558 unb=0.574 n=10 eng=0.657 unb=0.666 n=30 eng=0.775 unb=0.779 n=100 eng=0.850 unb=0.851
+den t-interval pareto     cv=2.913 pa=None: n=5 eng=0.648 unb=0.675 n=10 eng=0.681 unb=0.695 n=30 eng=0.749 unb=0.753 n=100 eng=0.800 unb=0.801
+den t-interval twopoint   cv=2.913 pa=None: n=5 eng=0.225 unb=0.225 n=10 eng=0.395 unb=0.395 n=30 eng=0.771 unb=0.784 n=100 eng=0.853 unb=0.868
+den t-interval pareto     cv=0.361 pa=1.5: n=5 eng=0.527 unb=0.552 n=10 eng=0.562 unb=0.575 n=30 eng=0.603 unb=0.607 n=100 eng=0.650 unb=0.651
+written <repo>/experiments/icassp_r4_policy_results.json 154s

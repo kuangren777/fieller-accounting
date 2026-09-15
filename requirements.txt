@@ -1,0 +1,4 @@
+# versions the released artefacts were produced with
+numpy==2.4.6
+scipy==1.18.1
+matplotlib==3.11.0

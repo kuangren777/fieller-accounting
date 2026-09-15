@@ -1,0 +1,82 @@
+====================================================================================================================================
+ICASSP R2 frozen independent-seed holdout | reportability, common sets, score, scheduler fallback
+script_sha256=a4a2afb6a1fc33ba99b156b9fc96128a2b9806394289f1577695bfba2ecb9bbb
+seeds=910000..910399 MC=400 K=24 sigma=0.35 gamma=0.0 budget=30x alpha=0.10
+scope: fixed-arm ratios; no adaptive-validity, optional-stopping, post-selection, or external-validation claim
+====================================================================================================================================
+[0] frozen manifest validated: <repo>/archive/tmp/experiments/icassp_r2_holdout_frozen.json
+[1] oracle check: N=500000 iid draws/arm, max relative error=0.9135%, mean=0.2488%
+    threshold=1%; verdict=PASS
+[2] ucb_fieller    50/400 trajectories (15.3s)
+[2] ucb_fieller   100/400 trajectories (30.5s)
+[2] ucb_fieller   150/400 trajectories (46.8s)
+[2] ucb_fieller   200/400 trajectories (62.1s)
+[2] ucb_fieller   250/400 trajectories (77.3s)
+[2] ucb_fieller   300/400 trajectories (92.5s)
+[2] ucb_fieller   350/400 trajectories (108.5s)
+[2] ucb_fieller   400/400 trajectories (124.1s)
+[2] uniform        50/400 trajectories (124.4s)
+[2] uniform       100/400 trajectories (124.6s)
+[2] uniform       150/400 trajectories (124.9s)
+[2] uniform       200/400 trajectories (125.1s)
+[2] uniform       250/400 trajectories (125.4s)
+[2] uniform       300/400 trajectories (125.6s)
+[2] uniform       350/400 trajectories (125.8s)
+[2] uniform       400/400 trajectories (126.1s)
+[3] immutable holdout collection written: <repo>/archive/tmp/experiments/icassp_r2_holdout_cache.pkl (1.039 MB)
+
+[4] adaptive UCB with delta fallback, 30x
+    fixed-arm ratio estimands; MC=400 independent trajectories; K=24 dependent arms/trajectory
+    all uncertainty intervals: trajectory-cluster bootstrap ratio-of-sums, B=4000
+    common-D is an accounting set, not each method's ordinary conditional coverage.
+method          | report rate          | conditional          | joint                | common-F             | common-D accounting  | median width          | S_lambda(.50)
+Fieller         | 0.3259 [0.3174,0.3347] | 0.9530 [0.9459,0.9603] | 0.3106 [0.3020,0.3188] | 0.9530 [0.9455,0.9600] | 0.3106 [0.3019,0.3191] | 0.0712 [0.0691,0.0734] | 0.3620 [0.3584,0.3657]
+    width Fieller         Q1=0.0448 [0.0423,0.0469] median=0.0712 [0.0691,0.0734] Q3=0.0924 [0.0907,0.0938]; ordinary score=+inf
+raw delta       | 1.0000 [1.0000,1.0000] | 0.3103 [0.3015,0.3195] | 0.3103 [0.3016,0.3191] | 0.9511 [0.9434,0.9583] | 0.3103 [0.3016,0.3189] | 0.0000 [0.0000,0.0000] | 0.4891 [0.4817,0.4962]
+    width raw delta       Q1=0.0000 [0.0000,0.0000] median=0.0000 [0.0000,0.0000] Q3=0.0415 [0.0365,0.0463]; ordinary score=0.48908544774513324
+delta-JV        | 1.0000 [1.0000,1.0000] | 0.9858 [0.9835,0.9880] | 0.9858 [0.9836,0.9880] | 0.9565 [0.9498,0.9631] | 0.9858 [0.9835,0.9880] | 0.4782 [0.4690,0.4884] | 0.4910 [0.4840,0.4978]
+    width delta-JV        Q1=0.0969 [0.0946,0.0989] median=0.4782 [0.4690,0.4884] Q3=0.7334 [0.7228,0.7454]; ordinary score=0.4910201388076636
+Jeffreys+cost   | 0.4963 [0.4873,0.5053] | 0.9897 [0.9867,0.9925] | 0.4911 [0.4820,0.5002] | 0.9728 [0.9669,0.9787] | 0.4911 [0.4818,0.5005] | 0.1141 [0.1119,0.1160] | 0.4694 [0.4239,0.5308]
+    width Jeffreys+cost   Q1=0.0780 [0.0763,0.0801] median=0.1141 [0.1119,0.1160] Q3=0.2080 [0.1977,0.2171]; ordinary score=+inf
+    score sensitivity (descriptive except lambda=.50 in the frozen confirmatory family):
+      lambda=0.10: Fieller=0.0924 [0.0914,0.0936] | raw delta=0.4891 [0.4817,0.4967] | delta-JV=0.4910 [0.4844,0.4977] | Jeffreys+cost=0.2679 [0.2216,0.3262]
+      lambda=0.50: Fieller=0.3620 [0.3584,0.3657] | raw delta=0.4891 [0.4817,0.4962] | delta-JV=0.4910 [0.4840,0.4978] | Jeffreys+cost=0.4694 [0.4239,0.5308]
+      lambda=1.00: Fieller=0.6991 [0.6912,0.7067] | raw delta=0.4891 [0.4818,0.4962] | delta-JV=0.4910 [0.4843,0.4980] | Jeffreys+cost=0.7213 [0.6755,0.7805]
+
+[4] uniform control, 30x
+    fixed-arm ratio estimands; MC=400 independent trajectories; K=24 dependent arms/trajectory
+    all uncertainty intervals: trajectory-cluster bootstrap ratio-of-sums, B=4000
+    common-D is an accounting set, not each method's ordinary conditional coverage.
+method          | report rate          | conditional          | joint                | common-F             | common-D accounting  | median width          | S_lambda(.50)
+Fieller         | 0.9756 [0.9726,0.9785] | 0.9038 [0.8978,0.9098] | 0.8818 [0.8752,0.8880] | 0.9038 [0.8976,0.9097] | 0.8818 [0.8759,0.8879] | 0.0434 [0.0430,0.0438] | 0.0729 [0.0711,0.0747]
+    width Fieller         Q1=0.0297 [0.0294,0.0301] median=0.0434 [0.0430,0.0438] Q3=0.0626 [0.0621,0.0630]; ordinary score=+inf
+raw delta       | 1.0000 [1.0000,1.0000] | 0.8798 [0.8735,0.8859] | 0.8798 [0.8734,0.8861] | 0.9018 [0.8957,0.9077] | 0.8798 [0.8732,0.8859] | 0.0424 [0.0420,0.0428] | 0.0678 [0.0663,0.0694]
+    width raw delta       Q1=0.0287 [0.0284,0.0290] median=0.0424 [0.0420,0.0428] Q3=0.0617 [0.0613,0.0621]; ordinary score=0.06777067846723099
+delta-JV        | 1.0000 [1.0000,1.0000] | 0.8927 [0.8867,0.8985] | 0.8927 [0.8868,0.8988] | 0.9142 [0.9087,0.9199] | 0.8927 [0.8868,0.8986] | 0.0437 [0.0434,0.0442] | 0.0638 [0.0625,0.0651]
+    width delta-JV        Q1=0.0301 [0.0298,0.0304] median=0.0437 [0.0434,0.0442] Q3=0.0628 [0.0624,0.0632]; ordinary score=0.0638082404993111
+Jeffreys+cost   | 1.0000 [1.0000,1.0000] | 0.9769 [0.9739,0.9799] | 0.9769 [0.9739,0.9798] | 0.9824 [0.9796,0.9851] | 0.9769 [0.9739,0.9799] | 0.0582 [0.0578,0.0587] | 0.0675 [0.0670,0.0681]
+    width Jeffreys+cost   Q1=0.0398 [0.0394,0.0402] median=0.0582 [0.0578,0.0587] Q3=0.0851 [0.0843,0.0855]; ordinary score=0.06751204043927285
+    score sensitivity (descriptive except lambda=.50 in the frozen confirmatory family):
+      lambda=0.10: Fieller=0.0631 [0.0619,0.0643] | raw delta=0.0678 [0.0663,0.0693] | delta-JV=0.0638 [0.0625,0.0651] | Jeffreys+cost=0.0675 [0.0669,0.0681]
+      lambda=0.50: Fieller=0.0729 [0.0711,0.0747] | raw delta=0.0678 [0.0663,0.0694] | delta-JV=0.0638 [0.0625,0.0651] | Jeffreys+cost=0.0675 [0.0670,0.0681]
+      lambda=1.00: Fieller=0.0850 [0.0821,0.0880] | raw delta=0.0678 [0.0662,0.0694] | delta-JV=0.0638 [0.0625,0.0651] | Jeffreys+cost=0.0675 [0.0670,0.0681]
+
+[5] frozen confirmatory family: 3 common-F coverage + 3 all-unit S_lambda(.50) comparisons
+    two-sided Wilcoxon on independent trajectory summaries; Holm over exactly six tests
+    common-F coverage  Fieller vs raw delta       diff=0.0019 [-0.0008,0.0048] raw_p=0.20461 Holm=0.20461 n=400
+    common-F coverage  Fieller vs delta-JV        diff=-0.0041 [-0.0071,-0.0013] raw_p=0.0050438 Holm=0.010088 n=400
+    common-F coverage  Fieller vs Jeffreys+cost   diff=-0.0214 [-0.0295,-0.0138] raw_p=4.9356e-07 Holm=1.9743e-06 n=400
+    S_lambda(0.50)     Fieller vs raw delta       diff=-0.1270 [-0.1318,-0.1222] raw_p=4.3817e-67 Holm=2.1908e-66 n=400
+    S_lambda(0.50)     Fieller vs delta-JV        diff=-0.1290 [-0.1337,-0.1246] raw_p=2.9653e-67 Holm=1.7792e-66 n=400
+    S_lambda(0.50)     Fieller vs Jeffreys+cost   diff=-0.1074 [-0.1683,-0.0624] raw_p=0.0031226 Holm=0.0093679 n=400
+
+[6] scheduler-level delta-fallback audit (main-loop decisions; initialization separate)
+    initialization pulls=9600; policy decisions=444216; candidate evaluations=10661184
+    candidate fallback=7239709 (0.6791); selected-arm fallback=10723 (0.0241)
+    candidate reasons n<2/A-only/D-only/A&D = 120000/24480/4655635/2439594
+    selected reasons  n<2/A-only/D-only/A&D = 9600/1121/0/2
+    budget quartile candidate-fallback rates = 0.7075/0.6732/0.6721/0.6717
+    budget quartile selected-fallback rates  = 0.1259/0.0000/0.0000/0.0000
+
+[7] frozen derived results written: <repo>/archive/tmp/experiments/icassp_r2_holdout_results.json
+DONE

@@ -1,0 +1,113 @@
+
+====================================================================================================
+S0  ORACLE SELF-CHECK  (analytic rho vs 4e5 iid draws per arm; gate |rel err| < 1%)
+====================================================================================================
+  sigma=0.35 gamma=0.0 : max|rel err|=0.00958  mean=0.00295
+  sigma=0.90 gamma=0.0 : max|rel err|=0.00882  mean=0.00315
+  sigma=1.50 gamma=0.0 : max|rel err|=0.00935  mean=0.00414
+  sigma=0.35 gamma=0.8 : max|rel err|=0.00917  mean=0.00269
+  WORST = 0.00958 -> PASS
+
+====================================================================================================
+S1  WHEN A RATIO INTERVAL EXISTS   report  <=>  (CVhat_n < sqrt(n)/t)  and  (rbar > 0)
+====================================================================================================
+  200000 replicates per cell, LogNormal costs, Bernoulli outcomes, independent
+  180 cells in 7.2s
+
+  [1] the identity  A > 0  <=>  CVhat < sqrt(n)/t
+      agreement over 180 cells x 200000 replicates: min 1.000000, mean 1.000000
+
+  [2] factorisation  P(report) = P(cost branch) x P(outcome branch)
+      independent costs and outcomes: max |err| = 0.00099, mean |err| = 0.00012
+
+  [3] outcome branch  P(rbar > 0) = 1 - (1-mu)^n
+      max |err| = 0.00268 over 180 cells
+
+  [4] Gaussian refinement of the cost branch, treating T_n as N(sqrt(n)/CV, 1)
+      max |err| = 0.6346, mean |err| = 0.2115  -- it is NOT reliable
+      sigma=0.35 (CV=0.36): max |err| = 0.6338
+      sigma=0.90 (CV=1.12): max |err| = 0.5094
+      sigma=1.50 (CV=2.91): max |err| = 0.5962
+
+  [5] why it fails: the sample CV is biased low, E[CVhat]/CV by n
+      sigma           2       4       8      15      30      60
+      0.35        0.527   0.760   0.876   0.932   0.965   0.982
+      0.90        0.375   0.576   0.712   0.802   0.874   0.923
+      1.50        0.197   0.318   0.421   0.509   0.599   0.682
+
+  [6] which branch binds, measured P(cost) and P(outcome) at n=10
+      mu=0.05 :   sigma=0.35 cost=1.000 out=0.402   sigma=0.90 cost=0.991 out=0.400   sigma=1.50 cost=0.825 out=0.403
+      mu=0.10 :   sigma=0.35 cost=1.000 out=0.651   sigma=0.90 cost=0.990 out=0.652   sigma=1.50 cost=0.826 out=0.652
+      mu=0.18 :   sigma=0.35 cost=1.000 out=0.861   sigma=0.90 cost=0.990 out=0.862   sigma=1.50 cost=0.826 out=0.863
+      mu=0.30 :   sigma=0.35 cost=1.000 out=0.972   sigma=0.90 cost=0.991 out=0.972   sigma=1.50 cost=0.826 out=0.972
+
+  [7] coupling check: gamma = 0.8 makes cost depend on the outcome
+      60 coupled cells: factorisation max |err| = 0.05480, identity agreement 1.000000
+
+====================================================================================================
+S2  DESIGN RULE   how many pulls per arm before a ratio is reportable
+====================================================================================================
+  outcome side is exact: n >= log(eta)/log(1-mu) for P(rbar=0) <= eta
+  cost side plug-in from the identity: smallest n with sqrt(n)/t > CV
+
+    mu     sigma   | n outcome n cost    n rule    | n measured
+    0.05   0.35    | 59        3         59        | 50       
+    0.05   0.90    | 59        6         59        | 50       
+    0.05   1.50    | 59        25        59        | 50       
+    0.10   0.35    | 29        3         29        | 25       
+    0.10   0.90    | 29        6         29        | 25       
+    0.10   1.50    | 29        25        29        | 30       
+    0.18   0.35    | 16        3         16        | 12       
+    0.18   0.90    | 16        6         16        | 12       
+    0.18   1.50    | 16        25        25        | 20       
+    0.30   0.35    | 9         3         9         | 8        
+    0.30   0.90    | 9         6         9         | 8        
+    0.30   1.50    | 9         25        25        | 15       
+
+  the rule is conservative (n_rule >= n_measured) in 11 of 12 grid points
+  n_rule / n_measured: median 1.18, range [0.97, 1.67]
+  conservativeness comes from the cost side, since E[CVhat] < CV at small n
+  restricted to sigma=0.35 where the outcome side binds: median 1.17, range [1.12, 1.33]
+
+====================================================================================================
+S3  REPLICATION ACROSS ENVIRONMENT INSTANCES  (20 instances, MC=200, sigma=0.35, 30x)
+====================================================================================================
+  the archived runs all used base_seed=20260813; here the arm parameters
+  themselves are redrawn, which is the variation the earlier grid did not cover
+  40 runs in 145.8s
+
+  ucb_fieller
+    Fieller coverage on its reported set   0.9582  [0.9375, 0.9739] over instances
+    delta   coverage on that same set      0.9585  [0.9398, 0.9709]
+    gap between them                       -0.0002 [-0.0055, +0.0030]
+    delta   coverage on all units          0.3170  [0.2683, 0.3658]
+    degenerate share                       0.6696  [0.6202, 0.7200]
+
+  uniform
+    Fieller coverage on its reported set   0.8934  [0.8856, 0.9049] over instances
+    delta   coverage on that same set      0.8922  [0.8848, 0.9014]
+    gap between them                       +0.0013 [-0.0009, +0.0040]
+    delta   coverage on all units          0.8749  [0.8650, 0.8798]
+    degenerate share                       0.0193  [0.0073, 0.0358]
+
+====================================================================================================
+S4  ARM SUCCESS RATES FROM REAL LLM EVALUATION TRACES
+====================================================================================================
+  e7: 40 candidates, rate in [0.000, 1.000], median 0.183, share exactly 0 = 0.200
+  e8: 48 candidates, rate in [0.000, 1.000], median 0.013, share exactly 0 = 0.479
+  pooled 88 candidates, 55 with 0 < phat < 1 (the rest cannot define a positive ratio)
+
+  sigma=0.35, K=55 real candidates, budget 30x, MC=200
+    median pulls per arm 2, quartiles 2 / 4
+    reportability measured 0.3825   predicted by the model 0.3813   error +0.0011
+    Fieller coverage on reported set 0.8823 [0.8723, 0.8917]
+    delta   coverage on the same set 0.8911 [0.8814, 0.9002]
+
+  sigma=1.50, K=55 real candidates, budget 30x, MC=200
+    median pulls per arm 2, quartiles 2 / 3
+    reportability measured 0.1635   predicted by the model 0.1990   error -0.0355
+    Fieller coverage on reported set 0.8171 [0.7986, 0.8343]
+    delta   coverage on the same set 0.8332 [0.8153, 0.8498]
+
+TOTAL 1315.6s
+wrote reportability.json
