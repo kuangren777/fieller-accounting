@@ -16,7 +16,10 @@ with their paths unchanged.
 
 ```
 experiments/                    new sampling for the paper
-  ratio_ci.py                   the six constructions with explicit set-kind classification
+  ratio_ci.py                   the nine constructions with explicit set-kind classification
+  icassp_r7_holdout_cmin.py     replays the frozen holdout to recover each arm's sorted costs
+  icassp_r7_holdout_cmin.pkl    those costs, used by the positivity set (4 MB)
+  test_ratio_ci_r7.py           tests for Fieller-JV, MOVER-R and the positivity set
   icassp_r3_selection.py        selected-arm and n-screen study
   icassp_r4_policy.py           fallback ablation, budgets, 30 environments, 12 policies
   icassp_r5_designs.py          regularised indices, two-stage design, Bayes and conf. seq.
@@ -50,13 +53,16 @@ From a clean clone, in order. Timings are wall clock on 40 cores.
 # 1. recompute the frozen holdout from its sufficient statistics       ~4 min
 python3 paper-overleaf/tools/analysis_r2.py
 
+# 1b. lambda range, width tails and g diagnostics on the holdout      ~1 min
+python3 paper-overleaf/tools/analysis_r8_scale.py
+
 # 2. rebuild data/*.json from the frozen collections and raw outputs   ~10 s
 python3 paper-overleaf/tools/extract_data.py
 
 # 3. regenerate every macro and every table                           ~2 s
 python3 paper-overleaf/tools/make_numbers.py
 
-# 4. regenerate the two figures                                       ~15 s
+# 4. regenerate the figures                                           ~15 s
 python3 paper-overleaf/tools/make_figs.py
 ```
 

@@ -93,6 +93,80 @@ def delta_jv_set(M, alpha=0.10):
     return delta_set(M, alpha, srr=srr, src=src)
 
 
+def fieller_jv_set(M, alpha=0.10):
+    """Fieller with the Jeffreys-shrunk outcome variance of delta-JV, so the numerator never has
+    zero variance.  The covariance keeps the sample correlation, taken as zero when it is undefined."""
+    n = M["n"]
+    p = (M["sr"] + 0.5) / (n + 1.0)
+    srr = p * (1.0 - p)
+    den = np.sqrt(M["srr"] * M["scc"])
+    corr = np.clip(np.divide(M["src"], np.maximum(den, 1e-15), out=np.zeros_like(den), where=den > 1e-15), -1.0, 1.0)
+    M2 = dict(M, srr=srr, src=corr * np.sqrt(srr * M["scc"]))
+    lo, hi, kind, _ = fieller_set(M2, alpha)
+    return lo, hi, kind
+
+
+def mover_r_set(M, alpha=0.10):
+    """MOVER-R for a ratio of two independently estimated means: a Wilson interval for mu and a
+    Student-t interval for E[c], each at level 1-alpha, combined by the method of variance estimates
+    recovery.  No bounded set exists when the cost interval reaches zero."""
+    n = M["n"]
+    nn = np.maximum(n, 2.0)
+    z = tdist.ppf(1.0 - alpha / 2.0, 1e9)
+    ph = M["rh"]
+    cen = (ph + z * z / (2 * nn)) / (1 + z * z / nn)
+    half = z * np.sqrt(ph * (1 - ph) / nn + z * z / (4 * nn * nn)) / (1 + z * z / nn)
+    l1, u1 = np.maximum(cen - half, 0.0), np.minimum(cen + half, 1.0)
+    q = tdist.ppf(1.0 - alpha / 2.0, nn - 1.0)
+    h = q * np.sqrt(M["scc"] / nn)
+    b = M["ch"]
+    l2, u2 = b - h, b + h
+    lo = np.full(n.shape, -np.inf)
+    hi = np.full(n.shape, np.inf)
+    kind = np.full(n.shape, "line", dtype=object)
+    good = (n >= 2) & (l2 > 0)
+    with np.errstate(all="ignore"):
+        ab = ph * b
+        L = (ab - np.sqrt(np.maximum(ab ** 2 - l1 * u2 * (2 * ph - l1) * (2 * b - u2), 0.0))) / (u2 * (2 * b - u2))
+        U = (ab + np.sqrt(np.maximum(ab ** 2 - u1 * l2 * (2 * ph - u1) * (2 * b - l2), 0.0))) / (l2 * (2 * b - l2))
+    lo[good], hi[good] = L[good], U[good]
+    kind[good] = "interval"
+    kind[n < 2] = "n<2"
+    return lo, hi, kind
+
+
+def anderson_lower(sorted_costs, alpha):
+    """Anderson's lower confidence bound for the mean of a non-negative variable, from a one-sided
+    DKW band with Massart's constant: the mean is at least the integral of 1 - min(1, F_n + eps)."""
+    x = np.asarray(sorted_costs, float)
+    n = x.size
+    if n < 1:
+        return 0.0
+    eps = np.sqrt(np.log(1.0 / alpha) / (2.0 * n))
+    steps = np.diff(np.concatenate([[0.0], x]))
+    return float(np.sum(steps * np.maximum(0.0, 1.0 - (np.arange(n) / n + eps))))
+
+
+def positivity_set(M, sorted_costs, alpha=0.10):
+    """A set that uses only c > 0: [0, r_hi / c_lo] with r_hi a one-sided Jeffreys upper limit for mu
+    and c_lo Anderson's lower limit for E[c], each at one-sided level alpha/2.  It is bounded on every
+    unit with two or more pulls, and its coverage is at least 1 - alpha by the union bound."""
+    n = M["n"]
+    nn = np.maximum(n, 2.0)
+    s = M["sr"]
+    rhi = beta_dist.ppf(1.0 - alpha / 2.0, s + 0.5, nn - s + 0.5)
+    clo = np.vectorize(lambda c: anderson_lower(c, alpha / 2.0), otypes=[float])(sorted_costs)
+    lo = np.full(n.shape, -np.inf)
+    hi = np.full(n.shape, np.inf)
+    kind = np.full(n.shape, "line", dtype=object)
+    good = (n >= 2) & (clo > 0)
+    lo[good] = 0.0
+    hi[good] = rhi[good] / clo[good]
+    kind[good] = "interval"
+    kind[n < 2] = "n<2"
+    return lo, hi, kind
+
+
 def jeffreys_cost_set(M, alpha=0.10):
     """Jeffreys interval for mu (tail alpha/4 each side) and Student-t interval for E[c] (tail alpha/4);
     ratio of endpoints when the cost lower limit is positive, otherwise no bounded set ('line')."""

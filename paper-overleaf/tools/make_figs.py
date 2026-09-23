@@ -43,14 +43,14 @@ for c in x4["cells"]:
     rep[i, j] = c["report"][0]
     fail[i, j] = c["conditional"][2] < 0.90
 
-fig, axes = plt.subplots(1, 2, figsize=(7.1, 1.34), gridspec_kw={"wspace": 0.42})
+fig, axes = plt.subplots(2, 1, figsize=(3.45, 2.42), gridspec_kw={"hspace": 0.30})
 
 for ax, mat, title, cmap, vmin, vmax in (
         (axes[0], cond, "(a) Fieller conditional coverage", "viridis", 0.84, 0.99),
         (axes[1], rep, "(b) Fieller report rate", "magma", 0.0, 1.0)):
     im = ax.imshow(mat, cmap=cmap, vmin=vmin, vmax=vmax, aspect="auto")
     ax.set_xticks(range(7))
-    ax.set_xticklabels(MECH_SHORT, rotation=45, ha="right")
+    ax.set_xticklabels(MECH_SHORT if ax is axes[1] else [], rotation=45, ha="right")
     ax.set_yticks(range(9))
     ax.set_yticklabels(DIST_SHORT)
     ax.set_title(title, loc="left")
@@ -114,110 +114,8 @@ fig.savefig(os.path.join(FIGS, "fig_budget_alpha.pdf"), bbox_inches="tight", pad
 print("figs/fig_budget_alpha.pdf written")
 
 
-# ---------------------------------------------------------------------------
-# Figure 1 (fig_sets.pdf): the existence criterion of Proposition 1 and the
-# four sets returned on a zero-outcome arm.  Panel (b) endpoints come from
-# ratio_ci.py on two seeded cost pairs of the benchmark distribution, so the
-# picture is produced by the same code as the tables.
-# ---------------------------------------------------------------------------
-import sys  # noqa: E402
-
-sys.path.insert(0, os.path.abspath(os.path.join(ROOT, "..", "experiments")))
-import ratio_ci as RC  # noqa: E402
-from scipy.stats import t as tdist  # noqa: E402
-
-ALPHA = 0.10
-SIGMA = 0.35
-THETA = float(np.median([p["rho"] for p in json.load(
-    open(os.path.join(DATA, "r2_recomputed.json")))["adaptive"]["per_arm_fieller"]]))
-TCRIT = float(tdist.ppf(1.0 - ALPHA / 2.0, 1))
-THR = np.sqrt(2.0) / TCRIT            # CV-hat threshold of condition (i) at n = 2
 
 
-def unit(costs):
-    """Moment dict for one arm-trajectory unit with two zero outcomes."""
-    c = np.asarray(costs, float).reshape(1, 2)
-    S = {"n": np.array([[2.0]]), "sr": np.array([[0.0]]), "sc": c.sum(1, keepdims=True),
-         "sr2": np.array([[0.0]]), "sc2": (c ** 2).sum(1, keepdims=True), "src": np.array([[0.0]])}
-    return RC.moments(S)
-
-
-rng = np.random.default_rng(7)
-draws = rng.lognormal(0.0, SIGMA, size=(4000, 2))
-cvhat = draws.std(1, ddof=1) / draws.mean(1)
-tight = draws[cvhat < 0.6 * THR][0]   # condition (i) holds
-wide = draws[cvhat > 1.6 * THR][0]    # condition (i) fails
-
-fig, axes = plt.subplots(1, 2, figsize=(3.35, 1.24), gridspec_kw={"width_ratios": [1.0, 1.28], "wspace": 0.42})
-
-# (a) existence regions of Proposition 1
-ax = axes[0]
-ax.axvspan(0, THR, ymin=0.5, ymax=1.0, color="#cfe3f5")
-ax.axvspan(THR, 0.65, ymin=0.5, ymax=1.0, color="#f6ddc9")
-ax.axvspan(0, THR, ymin=0.0, ymax=0.5, color="#ead9ef")
-ax.axvspan(THR, 0.65, ymin=0.0, ymax=0.5, color="#f6ddc9")
-ax.axvline(THR, color="k", lw=0.8)
-ax.axhline(0.5, color="k", lw=0.8)
-ax.text(THR / 2, 0.75, r"$[l,u]$", ha="center", va="center", fontsize=8)
-ax.text((THR + 0.65) / 2, 0.75, r"two rays / $\mathbb{R}$", ha="center", va="center", fontsize=6.3)
-ax.text(THR / 2, 0.25, r"$\{0\}$", ha="center", va="center", fontsize=8)
-ax.text((THR + 0.65) / 2, 0.25, r"$\mathbb{R}$", ha="center", va="center", fontsize=8)
-ax.set_xlim(0, 0.65)
-ax.set_ylim(0, 1)
-ax.set_xticks([0, THR, 0.6])
-ax.set_xticklabels(["0", r"$\sqrt{n}/t$", ""])
-ax.set_yticks([0.25, 0.75])
-ax.set_yticklabels([r"$\bar r=0$", r"$\bar r>0$"])
-ax.set_xlabel(r"$\widehat{\mathrm{CV}}_n=\sqrt{s_{cc}}/\bar c$", labelpad=0.5)
-ax.set_title("(a) Fieller set, Prop. 1", loc="left", pad=2.5)
-ax.tick_params(length=2)
-
-# (b) the four constructions on a zero-outcome arm (two zeros, n = 2)
-ax = axes[1]
-XL, XR = -0.16, 0.16
-rows = []
-for lab, cost in (("Fieller, (i) holds", tight), ("Fieller, (i) fails", wide)):
-    M = unit(cost)
-    lo, hi, kind = RC.fieller_set(M, ALPHA)[:3]
-    rows.append((lab, float(lo[0, 0]), float(hi[0, 0]), str(kind[0, 0])))
-M = unit(tight)
-for name in ("raw delta", "delta-JV", "Jeffreys+cost"):
-    lo, hi, kind = RC.all_sets(M, ALPHA)[name]
-    rows.append((name, float(lo[0, 0]), float(hi[0, 0]), str(kind[0, 0])))
-
-for k, (lab, lo, hi, kind) in enumerate(rows):
-    y = len(rows) - 1 - k
-    if kind == "point":
-        ax.plot([0], [y], "o", ms=3.4, color="#b2182b", zorder=3)
-    elif kind == "line":
-        ax.annotate("", xy=(XR, y), xytext=(XL, y),
-                    arrowprops=dict(arrowstyle="<->", lw=1.1, color="#2166ac"))
-    else:
-        pad = 0.022
-        l, h = max(lo, XL + pad), min(hi, XR - pad)
-        ax.plot([l, h], [y, y], lw=1.8, color="#2166ac", solid_capstyle="butt")
-        if lo < XL + pad:
-            ax.annotate("", xy=(XL, y), xytext=(l, y), arrowprops=dict(arrowstyle="->", lw=1.1, color="#2166ac"))
-        else:
-            ax.plot([l], [y], "|", ms=5, color="#2166ac")
-        if hi > XR - pad:
-            ax.annotate("", xy=(XR, y), xytext=(h, y), arrowprops=dict(arrowstyle="->", lw=1.1, color="#2166ac"))
-        else:
-            ax.plot([h], [y], "|", ms=5, color="#2166ac")
-    ax.text(XL, y + 0.22, lab, fontsize=6.0, va="bottom")
-ax.axvline(THETA, color="k", ls=":", lw=0.9)
-ax.text(THETA + 0.006, -0.72, r"$\theta$", fontsize=7.5)
-ax.set_xlim(XL, XR)
-ax.set_ylim(-0.85, len(rows) - 0.25)
-ax.set_yticks([])
-ax.set_xticks([0, THETA])
-ax.set_xticklabels(["0", ""])
-ax.set_title("(b) sets on a zero-outcome arm", loc="left", pad=2.5)
-ax.tick_params(length=2)
-for s in ("top", "right", "left"):
-    ax.spines[s].set_visible(False)
-
-fig.savefig(os.path.join(FIGS, "fig_sets.pdf"), bbox_inches="tight", pad_inches=0.02)
-print("theta=%.3f threshold=%.3f" % (THETA, THR))
-for r in rows:
-    print("  %-19s %-9s [%.3f, %.3f]" % (r[0], r[3], r[1], r[2]))
+# Method architecture is independently reproducible without loading result data.
+from make_method import main as make_method
+make_method()

@@ -29,7 +29,9 @@ import ratio_ci as RC  # noqa: E402
 ALPHA = 0.10
 B = 4000
 LAMBDAS = [0.02, 0.05, 0.1, 0.2, 0.5, 1.0]
-METHODS = ("Fieller", "raw delta", "delta-JV", "Jeffreys+cost", "Bayes", "conf. seq.")
+# Appended last so the bootstrap seeds of the six earlier methods, keyed by index, do not move.
+METHODS = ("Fieller", "raw delta", "delta-JV", "Jeffreys+cost", "Bayes", "conf. seq.",
+           "Fieller-JV", "MOVER-R", "positivity")
 
 
 def boot_ratio(num, den, seed, B=B):
@@ -71,7 +73,7 @@ def holm(p):
     return out
 
 
-def analyse(pol, S, rho, unbiased=True):
+def analyse(pol, S, rho, unbiased=True, costs=None):
     M = RC.moments(S, unbiased=unbiased)
     n = M["n"]
     mc, K = n.shape
@@ -81,11 +83,17 @@ def analyse(pol, S, rho, unbiased=True):
     tmax = float(np.max(rho)) * 6.0
     sets["Bayes"] = RC.bayes_set(M, ALPHA)
     sets["conf. seq."] = RC.cs_set(M, ALPHA, theta_max=tmax)
+    sets["Fieller-JV"] = RC.fieller_jv_set(M, ALPHA)
+    sets["MOVER-R"] = RC.mover_r_set(M, ALPHA)
+    if costs is not None:
+        sets["positivity"] = RC.positivity_set(M, costs, ALPHA)
     lo_f, hi_f, kind_f = sets["Fieller"]
     nondeg_f = kind_f == "interval"
     out = {"policy": pol, "MC": mc, "K": K, "methods": {}, "kinds": {}}
     per_traj = {}
     for i, name in enumerate(METHODS):
+        if name not in sets:
+            continue
         lo, hi, kind = sets[name]
         bounded = np.isfinite(lo) & np.isfinite(hi)
         nondeg = kind == "interval"
@@ -172,7 +180,8 @@ def main():
     res = {"source": "icassp_r2_holdout_cache.pkl", "script_sha256": d.get("script_sha256"), "alpha": ALPHA,
            "convention": "unbiased variance for every construction", "lambdas": LAMBDAS,
            "rho_max": float(rho.max()), "rho_min": float(rho.min()), "budget": float(d["budget"]),
-           "adaptive": analyse("adaptive UCB with delta fallback", d["data"]["ucb_fieller"]["stats"], rho),
+           "adaptive": analyse("adaptive UCB with delta fallback", d["data"]["ucb_fieller"]["stats"], rho,
+                                costs=pickle.load(open(os.path.join(EXP, "icassp_r7_holdout_cmin.pkl"), "rb"))["sorted_costs"]),
            "uniform": analyse("uniform control", d["data"]["uniform"]["stats"], rho),
            "adaptive_mle": analyse("adaptive UCB with delta fallback (MLE variance)", d["data"]["ucb_fieller"]["stats"], rho, unbiased=False),
            "scheduler_fallback": json.load(open(os.path.join(ARCH, "icassp_r2_holdout_results.json")))["scheduler_fallback"]}
@@ -182,6 +191,8 @@ def main():
     json.dump(res, open(out, "w"), indent=1, sort_keys=True)
     A = res["adaptive"]
     for name in METHODS:
+        if name not in A["methods"]:
+            continue
         r = A["methods"][name]
         print("%-14s kinds=%s | nondeg rep=%.3f cond=%.3f | bounded rep=%.3f cond=%.3f | joint=%.3f commonF=%.3f S.5(nondeg)=%.3f S.5(bounded)=%.3f" % (
             name, {k: round(v, 3) for k, v in r["kinds"].items() if v > 0}, r["nondeg"]["report"][0], r["nondeg"]["conditional"][0],
