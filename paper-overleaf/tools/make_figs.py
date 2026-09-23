@@ -43,7 +43,7 @@ for c in x4["cells"]:
     rep[i, j] = c["report"][0]
     fail[i, j] = c["conditional"][2] < 0.90
 
-fig, axes = plt.subplots(2, 1, figsize=(3.45, 2.42), gridspec_kw={"hspace": 0.30})
+fig, axes = plt.subplots(2, 1, figsize=(3.45, 2.37), gridspec_kw={"hspace": 0.30})
 
 for ax, mat, title, cmap, vmin, vmax in (
         (axes[0], cond, "(a) Fieller conditional coverage", "viridis", 0.84, 0.99),
