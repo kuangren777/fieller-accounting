@@ -43,7 +43,7 @@ for c in x4["cells"]:
     rep[i, j] = c["report"][0]
     fail[i, j] = c["conditional"][2] < 0.90
 
-fig, axes = plt.subplots(2, 1, figsize=(3.45, 2.37), gridspec_kw={"hspace": 0.30})
+fig, axes = plt.subplots(2, 1, figsize=(3.45, 2.36), gridspec_kw={"hspace": 0.30})
 
 for ax, mat, title, cmap, vmin, vmax in (
         (axes[0], cond, "(a) Fieller conditional coverage", "viridis", 0.84, 0.99),
@@ -119,3 +119,20 @@ print("figs/fig_budget_alpha.pdf written")
 # Method architecture is independently reproducible without loading result data.
 from make_method import main as make_method
 make_method()
+
+
+# ============================================================================ budget sweep, single panel (RQ1)
+fig, ax = plt.subplots(1, 1, figsize=(3.45, 1.00))
+for pol, col, ls, lab in (("ucb_fieller_delta", "#0072B2", "-", "benchmark policy"), ("uniform", "#D55E00", "--", "uniform control")):
+    y = np.array([rep(pol, m) for m in mults])
+    ax.plot(mults, y[:, 0], color=col, ls=ls, marker="o", ms=3, lw=1.2, label=lab)
+    ax.fill_between(mults, y[:, 1], y[:, 2], color=col, alpha=0.2, lw=0)
+ax.axhline(pred, color="gray", lw=0.8, ls=":")
+ax.set_xscale("log"); ax.set_xticks(mults); ax.set_xticklabels([str(m) + r"$\times$" for m in mults]); ax.minorticks_off()
+ax.set_ylim(0, 1.05); ax.set_xlabel("budget multiplier", fontsize=7); ax.set_ylabel("report rate", fontsize=7)
+ax.tick_params(labelsize=7)
+ax.legend(frameon=False, loc="lower right", bbox_to_anchor=(1.0, 0.38), fontsize=7)
+for s_ in ("top", "right"):
+    ax.spines[s_].set_visible(False)
+fig.savefig(os.path.join(FIGS, "fig_budget.pdf"), bbox_inches="tight", pad_inches=0.02)
+print("figs/fig_budget.pdf written")
