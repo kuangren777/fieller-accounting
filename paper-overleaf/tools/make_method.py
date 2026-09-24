@@ -11,6 +11,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family': 'serif', 'font.serif': ['STIXGeneral'], 'mathtext.fontset': 'stix', 'pdf.fonttype': 42})
 from matplotlib.patches import Rectangle, FancyArrowPatch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -91,8 +92,8 @@ def _column_figure():
 
 
 def main():
-    with plt.rc_context({'font.family': 'serif', 'font.serif': ['DejaVu Serif'],
-                         'mathtext.fontset': 'dejavuserif', 'pdf.fonttype': 42,
+    with plt.rc_context({'font.family': 'serif', 'font.serif': ['STIXGeneral'],
+                         'mathtext.fontset': 'stix', 'pdf.fonttype': 42,
                          'svg.fonttype': 'none'}):
         fig = plt.figure(figsize=(7.1, 2.18))
         ax = fig.add_axes([0, 0, 1, 1])

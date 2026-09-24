@@ -19,9 +19,12 @@ DATA = os.path.join(ROOT, "data")
 FIGS = os.path.join(ROOT, "figs")
 os.makedirs(FIGS, exist_ok=True)
 
-plt.rcParams.update({"font.size": 7, "axes.titlesize": 7.5, "axes.labelsize": 7,
-                     "xtick.labelsize": 6.2, "ytick.labelsize": 6.2, "legend.fontsize": 6.2,
-                     "pdf.fonttype": 42, "font.family": "serif"})
+# Paper kit: Times-like text (STIX), axis labels, ticks, legends and panel titles >= 9 pt at column width.
+FS = 9.5
+plt.rcParams.update({"font.size": FS, "axes.titlesize": FS, "axes.labelsize": FS,
+                     "xtick.labelsize": FS, "ytick.labelsize": FS, "legend.fontsize": FS,
+                     "pdf.fonttype": 42, "font.family": "serif", "font.serif": ["STIXGeneral"],
+                     "mathtext.fontset": "stix"})
 
 x4 = json.load(open(os.path.join(DATA, "x4_landscape.json")))
 r2 = json.load(open(os.path.join(DATA, "r2_holdout.json")))
@@ -43,31 +46,28 @@ for c in x4["cells"]:
     rep[i, j] = c["report"][0]
     fail[i, j] = c["conditional"][2] < 0.90
 
-fig, axes = plt.subplots(2, 1, figsize=(3.45, 2.00), gridspec_kw={"hspace": 0.30})
-
-for ax, mat, title, cmap, vmin, vmax in (
-        (axes[0], cond, "(a) Fieller conditional coverage", "viridis", 0.84, 0.99),
-        (axes[1], rep, "(b) Fieller report rate", "magma", 0.0, 1.0)):
-    im = ax.imshow(mat, cmap=cmap, vmin=vmin, vmax=vmax, aspect="auto")
+# Side-by-side panels share the row labels. Light grey ramps keep black cell text readable in
+# black-and-white print, and a thick black frame marks cells whose upper limit is below nominal.
+from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
+GREY = LinearSegmentedColormap.from_list("lightgrey", ["#9a9a9a", "#ffffff"])
+fig, axes = plt.subplots(1, 2, figsize=(3.45, 1.80), gridspec_kw={"wspace": 0.06})
+for ax, mat, title, vmin, vmax in (
+        (axes[0], cond, "(a) coverage", 0.84, 0.99),
+        (axes[1], rep, "(b) report rate", 0.0, 1.0)):
+    ax.imshow(mat, cmap=GREY, vmin=vmin, vmax=vmax, aspect="auto")
     ax.set_xticks(range(7))
-    ax.set_xticklabels(MECH_SHORT if ax is axes[1] else [], rotation=45, ha="right")
+    ax.set_xticklabels(MECH_SHORT, rotation=90)
     ax.set_yticks(range(9))
-    ax.set_yticklabels(DIST_SHORT)
-    ax.set_title(title, loc="left")
+    ax.set_yticklabels(DIST_SHORT if ax is axes[0] else [])
+    ax.tick_params(length=0, pad=1.5)
+    ax.set_title(title, pad=2)
     for i in range(9):
         for j in range(7):
             v = mat[i, j]
-            col = "white" if (v - vmin) / (vmax - vmin) < 0.55 else "black"
-            ax.text(j, i, ("%.2f" % v).replace("0.", ".", 1) if v < 1 else "1.0", ha="center", va="center", fontsize=5.6, color=col)
-    if mat is cond:
-        for i in range(9):
-            for j in range(7):
-                if fail[i, j]:
-                    ax.add_patch(plt.Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False, edgecolor="red", lw=1.4))
-    cb = fig.colorbar(im, ax=ax, fraction=0.05, pad=0.02, shrink=0.9)
-    cb.ax.tick_params(labelsize=5.5)
-axes[0].axhline(0.90, color="none")
-
+            ax.text(j, i, ("%.2f" % v).replace("0.", ".", 1) if v < 1 else "1.0", ha="center", va="center",
+                    fontsize=5.6, color="black")
+            if mat is cond and fail[i, j]:
+                ax.add_patch(plt.Rectangle((j - 0.45, i - 0.45), 0.9, 0.9, fill=False, edgecolor="black", lw=1.6))
 fig.savefig(os.path.join(FIGS, "fig_landscape.pdf"), bbox_inches="tight", pad_inches=0.02)
 print("figs/fig_landscape.pdf written")
 
@@ -122,16 +122,15 @@ make_method()
 
 
 # ============================================================================ budget sweep, single panel (RQ1)
-fig, ax = plt.subplots(1, 1, figsize=(3.45, 1.00))
-for pol, col, ls, lab in (("ucb_fieller_delta", "#0072B2", "-", "benchmark policy"), ("uniform", "#D55E00", "--", "uniform control")):
+fig, ax = plt.subplots(1, 1, figsize=(3.62, 1.00))
+for pol, col, ls, lab in (("ucb_fieller_delta", "#0072B2", "-", "benchmark"), ("uniform", "#D55E00", "--", "uniform")):
     y = np.array([rep(pol, m) for m in mults])
     ax.plot(mults, y[:, 0], color=col, ls=ls, marker="o", ms=3, lw=1.2, label=lab)
     ax.fill_between(mults, y[:, 1], y[:, 2], color=col, alpha=0.2, lw=0)
 ax.axhline(pred, color="gray", lw=0.8, ls=":")
 ax.set_xscale("log"); ax.set_xticks(mults); ax.set_xticklabels([str(m) + r"$\times$" for m in mults]); ax.minorticks_off()
-ax.set_ylim(0, 1.05); ax.set_xlabel("budget multiplier", fontsize=7); ax.set_ylabel("report rate", fontsize=7)
-ax.tick_params(labelsize=7)
-ax.legend(frameon=False, loc="lower right", bbox_to_anchor=(1.0, 0.38), fontsize=7)
+ax.set_ylim(0, 1.05); ax.set_yticks([0, 0.5, 1]); ax.set_xlabel("budget multiplier"); ax.set_ylabel("report rate")
+ax.legend(frameon=False, loc="lower right", bbox_to_anchor=(1.0, -0.10), ncol=2, handlelength=1.8, columnspacing=1.0)
 for s_ in ("top", "right"):
     ax.spines[s_].set_visible(False)
 fig.savefig(os.path.join(FIGS, "fig_budget.pdf"), bbox_inches="tight", pad_inches=0.02)

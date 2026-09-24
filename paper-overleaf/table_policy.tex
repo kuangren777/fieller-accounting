@@ -3,20 +3,19 @@
 \toprule
 policy & zero-out. & report & cond. & reward \\
 \midrule
-\multicolumn{5}{@{}l@{}}{\emph{budget-oblivious control}} \\
 uniform & 0.026 & 0.974 & 0.900 & 132 \\
-\multicolumn{5}{@{}l@{}}{\emph{budgeted bandit indices}} \\
+\midrule
 UCB-BV1 & 0.037 & 0.963 & 0.905 & 141 \\
 UCB-BV2 & 0.038 & 0.962 & 0.903 & 145 \\
 KUBE & 0.149 & 0.849 & 0.922 & 217 \\
 Thompson on ratio & 0.242 & 0.701 & 0.933 & 256 \\
 $\epsilon$-greedy & 0.386 & 0.597 & 0.978 & 267 \\
 greedy & 0.000 & 0.166 & 0.957 & 263 \\
-\multicolumn{5}{@{}l@{}}{\emph{Fieller index with a fallback rule}} \\
+\midrule
 UCB-F, delta fallback & 0.669 & 0.330 & 0.960 & 290 \\
 \textbf{UCB-F, delta-JV fallback} & \textbf{0.471} & \textbf{0.528} & \textbf{0.966} & \textbf{296} \\
 UCB-F, $+\infty$ fallback & 0.000 & 0.999 & 0.927 & 259 \\
-\multicolumn{5}{@{}l@{}}{\emph{regularised indices}} \\
+\midrule
 KL-UCB & 0.151 & 0.615 & 0.914 & 256 \\
 Bernstein UCB & 0.102 & 0.543 & 0.907 & 235 \\
 Laplace delta & 0.244 & 0.604 & 0.937 & 272 \\
